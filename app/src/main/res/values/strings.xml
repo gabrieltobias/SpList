@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ShoppingList</string>
+    <string name="action_settings">Configurações</string>
+    <string name="dica_lista">Nome da Lista</string>
+    <string name="btn_salvar">Salvar</string>
+    <string name="campo_vazio">Nome da lista não pode ser vazio</string>
+    <string name="add_lista">Adicionar Lista</string>
+</resources>
