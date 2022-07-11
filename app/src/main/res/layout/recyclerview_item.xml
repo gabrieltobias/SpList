@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+
 
     <TextView
         android:id="@+id/textView"
         style="@style/nome_lista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light" />
-</LinearLayout>
+        android:background="@color/ItemLista"
+        android:clickable="true"
+        android:padding="15dp" />
+
+    <ImageButton
+        android:id="@+id/btn_deletaLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:contentDescription="Delete"
+        android:src="@drawable/ic_baseline_delete_24" />
+
+</RelativeLayout>
