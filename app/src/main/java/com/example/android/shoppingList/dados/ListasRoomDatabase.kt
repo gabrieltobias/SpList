@@ -62,10 +62,9 @@ abstract class ListasRoomDatabase : RoomDatabase() {
          * Popula o BD com uma lista de exemplo
          */
         suspend fun populateDatabase(listaDeComprasDao: ListaDeComprasDao) {
-            // Start the app with a clean database every time.
-            // Not needed if you only populate on creation.
+            // Starta o app com um DB clean
             listaDeComprasDao.deleteAll()
-            var listaDeCompras = ListaDeCompras("Lista de Exemplo")
+            var listaDeCompras = ListaDeCompras(1,"Lista de Exemplo")
             listaDeComprasDao.insert(listaDeCompras)
         }
     }

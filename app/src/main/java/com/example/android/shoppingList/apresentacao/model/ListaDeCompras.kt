@@ -9,4 +9,6 @@ import androidx.room.PrimaryKey
  */
 
 @Entity(tableName = "tb_ListaDeCompras")
-data class ListaDeCompras(@PrimaryKey @ColumnInfo(name = "NomeLista") val NomeLista: String)
+data class ListaDeCompras(
+    @PrimaryKey val id: Int,
+    @ColumnInfo(name = "NomeLista") val NomeLista: String)

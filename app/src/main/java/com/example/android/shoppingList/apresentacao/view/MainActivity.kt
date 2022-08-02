@@ -15,6 +15,9 @@ import com.example.android.shoppingList.apresentacao.ListaViewModelFactory
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.util.*
+import kotlin.random.Random
+import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,7 +56,8 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let { reply ->
-                val listaDeCompras = ListaDeCompras(reply)
+                var id = nextInt(1000000)
+                val listaDeCompras = ListaDeCompras(id,reply)
                 listasViewModel.insert(listaDeCompras)
             }
         } else {

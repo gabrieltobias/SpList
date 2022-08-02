@@ -22,9 +22,10 @@ interface ListaDeComprasDao {
     // os dados são modificados
     fun GetListas(): Flow<List<ListaDeCompras>>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(listaDeCompras: ListaDeCompras)
 
     @Query("DELETE FROM tb_ListaDeCompras")
     suspend fun deleteAll()
+
 }
