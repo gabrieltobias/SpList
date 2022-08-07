@@ -15,7 +15,7 @@ import com.example.android.shoppingList.R
  * Activity for entering a NomeLista.
  */
 
-class NewWordActivity : AppCompatActivity() {
+class NovaListaActivity : AppCompatActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

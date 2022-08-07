@@ -2,10 +2,7 @@
 
 package com.example.android.shoppingList.dados
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import kotlinx.coroutines.flow.Flow
 
@@ -27,5 +24,14 @@ interface ListaDeComprasDao {
 
     @Query("DELETE FROM tb_ListaDeCompras")
     suspend fun deleteAll()
+
+    @Query("SELECT * FROM tb_listadecompras WHERE id=:listaId")
+    fun getLista(listaId: Int): ListaDeCompras
+
+    @Update
+    fun updateLista(listaDeCompras: ListaDeCompras)
+
+    @Delete
+    fun deleteLista(listaDeCompras: ListaDeCompras)
 
 }

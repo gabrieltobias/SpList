@@ -3,6 +3,7 @@ package com.example.android.shoppingList.apresentacao.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -13,15 +14,15 @@ import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ListasViewModel
 import com.example.android.shoppingList.apresentacao.ListaViewModelFactory
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
+import com.example.android.shoppingList.dados.ListaDeComprasDao
+import com.example.android.shoppingList.dados.ListasRoomDatabase
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import java.util.*
-import kotlin.random.Random
 import kotlin.random.Random.Default.nextInt
 
 class MainActivity : AppCompatActivity() {
 
-    private val newWordActivityRequestCode = 1
+    private val novaListaActivityRequestCode = 1
     private val listasViewModel: ListasViewModel by viewModels {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
@@ -36,9 +37,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val fab = findViewById<FloatingActionButton>(R.id.fab)
+        val btnDeletaLista = findViewById<ImageButton>(R.id.btn_deletaLista)
         fab.setOnClickListener {
-            val intent = Intent(this@MainActivity, NewWordActivity::class.java)
-            startActivityForResult(intent, newWordActivityRequestCode)
+            val intent = Intent(this@MainActivity, NovaListaActivity::class.java)
+            startActivityForResult(intent, novaListaActivityRequestCode)
         }
 
         
@@ -54,8 +56,8 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)
 
-        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let { reply ->
+        if (requestCode == novaListaActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            intentData?.getStringExtra(NovaListaActivity.EXTRA_REPLY)?.let { reply ->
                 var id = nextInt(1000000)
                 val listaDeCompras = ListaDeCompras(id,reply)
                 listasViewModel.insert(listaDeCompras)

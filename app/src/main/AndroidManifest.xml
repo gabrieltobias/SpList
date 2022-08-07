@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.android.shoppingList.apresentacao.view.NewWordActivity" />
+        <activity android:name="com.example.android.shoppingList.apresentacao.view.NovaListaActivity" />
     </application>
 
 </manifest>

@@ -25,6 +25,9 @@ class ListasViewModel(private val repository: ListaDeComprasRepository) : ViewMo
     fun insert(listaDeCompras: ListaDeCompras) = viewModelScope.launch {
         repository.insert(listaDeCompras)
     }
+    fun deleteLista(listaDeCompras: ListaDeCompras) = viewModelScope.launch {
+        repository.deleteLista(listaDeCompras)
+    }
 }
 
 class ListaViewModelFactory(private val repository: ListaDeComprasRepository) : ViewModelProvider.Factory {
