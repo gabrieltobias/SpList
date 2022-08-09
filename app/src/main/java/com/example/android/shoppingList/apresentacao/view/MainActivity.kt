@@ -8,14 +8,13 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ListasViewModel
 import com.example.android.shoppingList.apresentacao.ListaViewModelFactory
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
-import com.example.android.shoppingList.dados.ListaDeComprasDao
-import com.example.android.shoppingList.dados.ListasRoomDatabase
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlin.random.Random.Default.nextInt
@@ -27,6 +26,8 @@ class MainActivity : AppCompatActivity() {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -36,12 +37,36 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val pos = viewHolder.adapterPosition
+                val listaDeCompras = adapter.currentList
+
+                listasViewModel.deleteLista(listaDeCompras.get(pos))
+            }
+        }
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(recyclerView)
+        }
+
         val fab = findViewById<FloatingActionButton>(R.id.fab)
         val btnDeletaLista = findViewById<ImageButton>(R.id.btn_deletaLista)
         fab.setOnClickListener {
             val intent = Intent(this@MainActivity, NovaListaActivity::class.java)
             startActivityForResult(intent, novaListaActivityRequestCode)
         }
+
 
         
         // Add an observer on the LiveData returned by getAlphabetizedWords.
@@ -52,6 +77,9 @@ class MainActivity : AppCompatActivity() {
             words.let { adapter.submitList(it) }
         }
     }
+
+
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
         super.onActivityResult(requestCode, resultCode, intentData)

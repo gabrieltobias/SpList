@@ -19,8 +19,6 @@ class ListaDeComprasRepository(private val listaDeComprasDao: ListaDeComprasDao)
     suspend fun insert(listaDeCompras: ListaDeCompras) {
         listaDeComprasDao.insert(listaDeCompras)
     }
-    suspend fun deleteLista(listaDeCompras: ListaDeCompras){
-        listaDeComprasDao.deleteLista(listaDeCompras)
-    }
+    suspend fun deleteLista(listaDeCompras: ListaDeCompras) = listaDeComprasDao.deleteLista(listaDeCompras)
 
 }

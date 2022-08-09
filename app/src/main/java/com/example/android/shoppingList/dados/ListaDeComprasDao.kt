@@ -32,6 +32,6 @@ interface ListaDeComprasDao {
     fun updateLista(listaDeCompras: ListaDeCompras)
 
     @Delete
-    fun deleteLista(listaDeCompras: ListaDeCompras)
+    suspend fun deleteLista(listaDeCompras: ListaDeCompras)
 
 }
