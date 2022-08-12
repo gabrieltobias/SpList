@@ -14,7 +14,12 @@ import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.apresentacao.view.ListasAdapter.ListaViewHolder
 
-class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMPARATOR) {
+
+
+
+class ListasAdapter(private val onClickListener: OnClickListener) : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMPARATOR) {
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListaViewHolder {
@@ -27,12 +32,18 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
 
     override fun onBindViewHolder(holder: ListaViewHolder, position: Int) {
         val current = getItem(position)
+
+        holder.itemView.setOnClickListener {
+            onClickListener.onClick(current)
+        }
+
         holder.bind(current.NomeLista)
+        
     }
 
     class ListaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val listaItemView: TextView = itemView.findViewById(R.id.textView)
-        private val btnDeletaLista: ImageButton = itemView.findViewById(R.id.btn_deletaLista)
+
 
         fun bind(text: String?) {
             listaItemView.text = text
@@ -42,7 +53,6 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
             fun create(parent: ViewGroup): ListaViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                     .inflate(R.layout.recyclerview_item, parent, false)
-
                 return ListaViewHolder(view)
             }
         }
@@ -58,5 +68,9 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
                 return oldItem.NomeLista == newItem.NomeLista
             }
         }
+    }
+
+    class OnClickListener(val clickListener: (lista: ListaDeCompras) -> Unit) {
+        fun onClick(lista: ListaDeCompras) = clickListener(lista)
     }
 }

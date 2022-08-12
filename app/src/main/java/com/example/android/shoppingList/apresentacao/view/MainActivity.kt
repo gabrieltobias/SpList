@@ -39,9 +39,15 @@ class MainActivity : AppCompatActivity() {
 
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = ListasAdapter()
+        val adapter = ListasAdapter(ListasAdapter.OnClickListener{Toast.makeText(applicationContext, "TODO",Toast.LENGTH_LONG).show()})
+
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+
+
+
 
         //Criando um objeto ItemTouchHelper
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
