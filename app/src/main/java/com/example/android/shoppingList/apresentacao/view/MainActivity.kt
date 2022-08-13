@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                Toast.makeText(this@MainActivity, "Testett", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity, "Item n $position", Toast.LENGTH_LONG).show()
             }
         })
 

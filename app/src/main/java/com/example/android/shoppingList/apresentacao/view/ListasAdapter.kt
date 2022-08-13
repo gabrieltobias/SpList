@@ -55,7 +55,7 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
         }
 
         init {
-            itemView.setOnClickListener {
+            listaItemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
             }
         }
