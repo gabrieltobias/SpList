@@ -36,17 +36,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        //Cria o recyclerView usando a classe Adapter
         val adapter = ListasAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         recyclerView.adapter = adapter
-
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //Função para visualizar uma lista a partir de um item
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 //Toast.makeText(this@MainActivity, "Item n $position", Toast.LENGTH_LONG).show()
+                //Criando o intent para o VisualizaLista
                 val intent = Intent(this@MainActivity, VisualizaListaActivity::class.java)
+
+                //Passando a lista que foi selecionada atraves do putExtra()
+                val listaDeCompras = adapter.currentList.get(position)
+                intent.putExtra("listaDeCompras",listaDeCompras.id)
                 startActivity(intent)
             }
         })

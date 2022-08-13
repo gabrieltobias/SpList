@@ -11,7 +11,9 @@ class VisualizaListaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visualiza_lista)
-
+        //Pegando o ID da lista selecionada a partir do MainActivity
+        val bundle : Bundle? = intent.extras
+        val id = bundle!!.getInt("listaDeCompras")
 
         //Botão que adiciona item a lista
         val btnAddItemLista = findViewById<FloatingActionButton>(R.id.add_item_lista)
