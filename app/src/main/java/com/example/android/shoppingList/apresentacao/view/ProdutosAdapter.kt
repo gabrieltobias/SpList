@@ -20,7 +20,7 @@ class ProdutosAdapter(): ListAdapter<Produto, ProdutosAdapter.ItensViewHolder>(I
 
     override fun onBindViewHolder(holder: ProdutosAdapter.ItensViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.NomeItem)
+        holder.bind(current.NomeProduto)
     }
 
 
@@ -48,7 +48,7 @@ class ProdutosAdapter(): ListAdapter<Produto, ProdutosAdapter.ItensViewHolder>(I
             }
 
             override fun areContentsTheSame(oldItem: Produto, newItem: Produto): Boolean {
-                return oldItem.NomeItem == newItem.NomeItem
+                return oldItem.NomeProduto == newItem.NomeProduto
             }
         }
     }

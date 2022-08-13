@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProdutosDao{
-    @Query("SELECT * FROM tb_produtos ORDER BY NomeItem ASC")
+    @Query("SELECT * FROM tb_produtos ORDER BY NomeProduto ASC")
     //O tipo Flow sempre guarda a ultima versão dos dados, e notifica os seus observadores quando
     // os dados são modificados
     fun GetProdutos(): Flow<List<Produto>>

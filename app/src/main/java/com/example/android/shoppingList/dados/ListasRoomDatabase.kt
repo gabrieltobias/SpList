@@ -72,8 +72,21 @@ abstract class ListasRoomDatabase : RoomDatabase() {
             produtosDao.deleteAll()
             var produto_exemplo_1 = Produto(1,"Leite", "Latcinios")
             var produto_exemplo_2 = Produto(2,"Frango","Carnes" )
+            var produto_exemplo_3 = Produto(3,"Refrigerante","Bebidas" )
+            var produto_exemplo_4 = Produto(4,"Sabonete","Higiene" )
+            var produto_exemplo_5 = Produto(5,"Shampoo","Higiene" )
+            var produto_exemplo_6 = Produto(6,"Amaciante","Higiene" )
+            var produto_exemplo_7 = Produto(7,"Ração de cachorro","Outros" )
+            var produto_exemplo_8 = Produto(8,"Cerveja","Bebidas" )
+
             produtosDao.insert(produto_exemplo_1)
             produtosDao.insert(produto_exemplo_2)
+            produtosDao.insert(produto_exemplo_3)
+            produtosDao.insert(produto_exemplo_4)
+            produtosDao.insert(produto_exemplo_5)
+            produtosDao.insert(produto_exemplo_6)
+            produtosDao.insert(produto_exemplo_7)
+            produtosDao.insert(produto_exemplo_8)
 
         }
     }
