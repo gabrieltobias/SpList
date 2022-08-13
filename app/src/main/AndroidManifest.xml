@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SelecionaItemsActivity"
+            android:name=".apresentacao.view.SelecionaItensActivity"
             android:exported="false" />
         <activity
             android:name=".apresentacao.view.VisualizaListaActivity"

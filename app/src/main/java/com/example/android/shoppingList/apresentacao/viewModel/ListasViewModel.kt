@@ -16,7 +16,6 @@ class ListasViewModel(private val repository: ListaDeComprasRepository) : ViewMo
     val todasAsListas: LiveData<List<ListaDeCompras>> = repository.todasAsListas.asLiveData()
     val listaUnica: LiveData<ListaDeCompras> = repository.listaUnica.asLiveData()
 
-
     /**
      * Usando coroutine para inserir os dados
      */

@@ -4,22 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ListaViewModelFactory
 import com.example.android.shoppingList.apresentacao.ListasViewModel
-import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
-import com.example.android.shoppingList.dados.ListaDeComprasDao
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.flow.Flow
 
 class VisualizaListaActivity : AppCompatActivity() {
 
     private val listasViewModel: ListasViewModel by viewModels {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +32,8 @@ class VisualizaListaActivity : AppCompatActivity() {
         //Botão que adiciona item a lista
         val btnAddItemLista = findViewById<FloatingActionButton>(R.id.add_item_lista)
         btnAddItemLista.setOnClickListener {
-            Toast.makeText(this, "TODO",Toast.LENGTH_LONG).show()
+            val intent = Intent(this@VisualizaListaActivity,SelecionaItensActivity::class.java)
+            startActivity(intent)
         }
     }
 }
