@@ -2,15 +2,10 @@
 
 package com.example.android.shoppingList.apresentacao.view
 
-import android.app.Application
-import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.app.ActivityCompat.startActivityForResult
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,7 +43,7 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
     }
 
     class ListaViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
-        private val listaItemView: TextView = itemView.findViewById(R.id.textView)
+        private val listaItemView: TextView = itemView.findViewById(R.id.txtViewNomeLista)
 
         fun bind(text: String?) {
             listaItemView.text = text

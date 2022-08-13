@@ -22,7 +22,7 @@ class SelecionaItensActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seleciona_itens)
-
+        
         //Cria o recyclerView usando a classe Adapter
         val adapter = ItensAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerSelecionaItem)
