@@ -4,22 +4,22 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.android.shoppingList.apresentacao.model.Item
+import com.example.android.shoppingList.apresentacao.model.Produto
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface ItensDao{
-    @Query("SELECT * FROM tb_itens ORDER BY NomeItem ASC")
+interface ProdutosDao{
+    @Query("SELECT * FROM tb_produtos ORDER BY NomeItem ASC")
     //O tipo Flow sempre guarda a ultima versão dos dados, e notifica os seus observadores quando
     // os dados são modificados
-    fun GetItems(): Flow<List<Item>>
+    fun GetProdutos(): Flow<List<Produto>>
 
-    @Query("SELECT * FROM tb_itens WHERE id=:itemId")
-    fun getItem(itemId: Int): Item
+    @Query("SELECT * FROM tb_produtos WHERE id=:itemId")
+    fun GetProduto(itemId: Int): Produto
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(item: Item)
+    suspend fun insert(produto: Produto)
 
-    @Query("DELETE FROM tb_itens")
+    @Query("DELETE FROM tb_produtos")
     suspend fun deleteAll()
 }

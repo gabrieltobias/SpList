@@ -2,9 +2,7 @@
 
 package com.example.android.shoppingList.dados
 
-import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.android.shoppingList.apresentacao.model.Item
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import kotlinx.coroutines.flow.Flow
 

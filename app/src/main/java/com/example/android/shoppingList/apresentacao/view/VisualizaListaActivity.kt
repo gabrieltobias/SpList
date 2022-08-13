@@ -32,7 +32,7 @@ class VisualizaListaActivity : AppCompatActivity() {
         //Botão que adiciona item a lista
         val btnAddItemLista = findViewById<FloatingActionButton>(R.id.add_item_lista)
         btnAddItemLista.setOnClickListener {
-            val intent = Intent(this@VisualizaListaActivity,SelecionaItensActivity::class.java)
+            val intent = Intent(this@VisualizaListaActivity,SelecionaProdutosActivity::class.java)
             startActivity(intent)
         }
     }

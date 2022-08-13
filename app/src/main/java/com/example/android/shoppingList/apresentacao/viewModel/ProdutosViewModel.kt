@@ -1,10 +1,8 @@
 package com.example.android.shoppingList.apresentacao
 
 import androidx.lifecycle.*
-import com.example.android.shoppingList.apresentacao.model.Item
-import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
-import com.example.android.shoppingList.dados.ItensRepository
-import com.example.android.shoppingList.dados.ListaDeComprasRepository
+import com.example.android.shoppingList.apresentacao.model.Produto
+import com.example.android.shoppingList.dados.ProdutosRepository
 import kotlinx.coroutines.launch
 
 /**
@@ -12,20 +10,20 @@ import kotlinx.coroutines.launch
  ViewModel que serve como uma comunicação entre o repositorio e a UI
  */
 
-class ItensViewModel(private val repository: ItensRepository) : ViewModel() {
+class ItensViewModel(private val repository: ProdutosRepository) : ViewModel() {
 
 
-    val todosOsItens: LiveData<List<Item>> = repository.todosOsItens.asLiveData()
+    val todosOsItens: LiveData<List<Produto>> = repository.todosOsProdutos.asLiveData()
 
     /**
      * Usando coroutine para inserir os dados
      */
-    fun insert(item: Item) = viewModelScope.launch {
-        repository.insert(item)
+    fun insert(produto: Produto) = viewModelScope.launch {
+        repository.insert(produto)
     }
 }
 
-class ItensViewModelFactory(private val repository: ItensRepository) : ViewModelProvider.Factory {
+class ItensViewModelFactory(private val repository: ProdutosRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ItensViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

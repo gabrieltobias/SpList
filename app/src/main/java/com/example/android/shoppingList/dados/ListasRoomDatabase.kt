@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.android.shoppingList.apresentacao.model.Item
+import com.example.android.shoppingList.apresentacao.model.Produto
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,11 +14,11 @@ import kotlinx.coroutines.launch
 /**
  * Este arquivo representa o BackEnd (Database) da Aplicação
  */
-@Database(entities = [ListaDeCompras::class, Item::class], version = 1)
+@Database(entities = [ListaDeCompras::class, Produto::class], version = 1)
 abstract class ListasRoomDatabase : RoomDatabase() {
 
     abstract fun listaDao(): ListaDeComprasDao
-    abstract fun itensDao(): ItensDao
+    abstract fun produtosDao(): ProdutosDao
 
     companion object {
         @Volatile
@@ -54,7 +54,7 @@ abstract class ListasRoomDatabase : RoomDatabase() {
                 super.onCreate(db)
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.listaDao(),database.itensDao())
+                        populateDatabase(database.listaDao(),database.produtosDao())
                     }
                 }
             }
@@ -63,17 +63,17 @@ abstract class ListasRoomDatabase : RoomDatabase() {
         /**
          * Popula o BD com uma lista de exemplo
          */
-        suspend fun populateDatabase(listaDeComprasDao: ListaDeComprasDao, itensDao: ItensDao) {
+        suspend fun populateDatabase(listaDeComprasDao: ListaDeComprasDao, produtosDao: ProdutosDao) {
             // Starta o app com um DB clean
             listaDeComprasDao.deleteAll()
             var listaDeCompras = ListaDeCompras(1,"Lista de Exemplo")
             listaDeComprasDao.insert(listaDeCompras)
 
-            itensDao.deleteAll()
-            var item_exemplo_1 = Item(1,"Leite", "Latcinios")
-            var item_exemplo_2 = Item(2,"Frango","Carnes" )
-            itensDao.insert(item_exemplo_1)
-            itensDao.insert(item_exemplo_2)
+            produtosDao.deleteAll()
+            var produto_exemplo_1 = Produto(1,"Leite", "Latcinios")
+            var produto_exemplo_2 = Produto(2,"Frango","Carnes" )
+            produtosDao.insert(produto_exemplo_1)
+            produtosDao.insert(produto_exemplo_2)
 
         }
     }

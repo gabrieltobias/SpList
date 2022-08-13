@@ -15,8 +15,8 @@ data class ListaDeCompras(
     @ColumnInfo(name = "NomeLista") val NomeLista: String)
 
 //Tabela que armazena todos os itens
-@Entity(tableName = "tb_itens")
-data class Item(
+@Entity(tableName = "tb_produtos")
+data class Produto(
         @PrimaryKey val id: Int,
         @ColumnInfo(name = "NomeItem") val NomeItem: String,
         @ColumnInfo(name = "CategoriaItem") val CategoriaItem: String)

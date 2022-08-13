@@ -8,17 +8,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
-import com.example.android.shoppingList.apresentacao.model.Item
+import com.example.android.shoppingList.apresentacao.model.Produto
 
-class ItensAdapter(): ListAdapter<Item, ItensAdapter.ItensViewHolder>(ITENS_COMPARATOR) {
+class ProdutosAdapter(): ListAdapter<Produto, ProdutosAdapter.ItensViewHolder>(ITENS_COMPARATOR) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItensAdapter.ItensViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProdutosAdapter.ItensViewHolder {
         val view: View = LayoutInflater.from(parent.context)
                 .inflate(R.layout.item_seleciona_produto, parent, false)
-        return ItensAdapter.ItensViewHolder.create(parent)
+        return ProdutosAdapter.ItensViewHolder.create(parent)
     }
 
-    override fun onBindViewHolder(holder: ItensAdapter.ItensViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProdutosAdapter.ItensViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current.NomeItem)
     }
@@ -42,12 +42,12 @@ class ItensAdapter(): ListAdapter<Item, ItensAdapter.ItensViewHolder>(ITENS_COMP
     }
 
     companion object {
-        private val ITENS_COMPARATOR = object : DiffUtil.ItemCallback<Item>() {
-            override fun areItemsTheSame(oldItem: Item, newItem: Item): Boolean {
+        private val ITENS_COMPARATOR = object : DiffUtil.ItemCallback<Produto>() {
+            override fun areItemsTheSame(oldItem: Produto, newItem: Produto): Boolean {
                 return oldItem === newItem
             }
 
-            override fun areContentsTheSame(oldItem: Item, newItem: Item): Boolean {
+            override fun areContentsTheSame(oldItem: Produto, newItem: Produto): Boolean {
                 return oldItem.NomeItem == newItem.NomeItem
             }
         }
