@@ -37,15 +37,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
+        val adapter = ListasAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = ListasAdapter(ListasAdapter.OnClickListener{Toast.makeText(applicationContext, "TODO",Toast.LENGTH_LONG).show()})
-
         recyclerView.adapter = adapter
+
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-
-
+        adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                Toast.makeText(this@MainActivity, "Testett", Toast.LENGTH_LONG).show()
+            }
+        })
 
 
 
@@ -61,6 +63,8 @@ class MainActivity : AppCompatActivity() {
             ): Boolean {
                 return true
             }
+
+
 
             //Deletando lista quando o usuário faz o swipe
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
