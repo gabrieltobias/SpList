@@ -3,6 +3,7 @@
 package com.example.android.shoppingList.dados
 
 import androidx.room.*
+import com.example.android.shoppingList.apresentacao.model.Item
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import kotlinx.coroutines.flow.Flow
 
@@ -12,7 +13,6 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ListaDeComprasDao {
-
 
     @Query("SELECT * FROM tb_ListaDeCompras ORDER BY NomeLista ASC")
     //O tipo Flow sempre guarda a ultima versão dos dados, e notifica os seus observadores quando
@@ -35,3 +35,5 @@ interface ListaDeComprasDao {
     suspend fun deleteLista(listaDeCompras: ListaDeCompras)
 
 }
+
+
