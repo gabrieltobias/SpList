@@ -49,7 +49,8 @@ class MainActivity : AppCompatActivity() {
 
                 //Passando a lista que foi selecionada atraves do putExtra()
                 val listaDeCompras = adapter.currentList.get(position)
-                intent.putExtra("listaDeCompras",listaDeCompras.id)
+                intent.putExtra("id",listaDeCompras.id)
+                intent.putExtra("nomeLista",listaDeCompras.NomeLista)
                 startActivity(intent)
             }
         })

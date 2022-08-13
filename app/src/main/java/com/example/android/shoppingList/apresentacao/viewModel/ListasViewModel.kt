@@ -1,10 +1,6 @@
 package com.example.android.shoppingList.apresentacao
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.ListaDeComprasRepository
 import kotlinx.coroutines.launch
@@ -18,6 +14,8 @@ class ListasViewModel(private val repository: ListaDeComprasRepository) : ViewMo
 
 
     val todasAsListas: LiveData<List<ListaDeCompras>> = repository.todasAsListas.asLiveData()
+    val listaUnica: LiveData<ListaDeCompras> = repository.listaUnica.asLiveData()
+
 
     /**
      * Usando coroutine para inserir os dados

@@ -2,6 +2,7 @@
 
 package com.example.android.shoppingList.dados
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.android.shoppingList.apresentacao.model.Item
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
@@ -25,8 +26,8 @@ interface ListaDeComprasDao {
     @Query("DELETE FROM tb_ListaDeCompras")
     suspend fun deleteAll()
 
-    @Query("SELECT * FROM tb_listadecompras WHERE id=:listaId")
-    fun getLista(listaId: Int): ListaDeCompras
+    @Query("SELECT * FROM tb_ListaDeCompras WHERE id=:id ")
+    fun GetLista(id: Int): Flow<ListaDeCompras>
 
     @Update
     fun updateLista(listaDeCompras: ListaDeCompras)
