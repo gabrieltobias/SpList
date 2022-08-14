@@ -50,7 +50,7 @@ class ListaDeComprasDaoTest {
     @Test
     @Throws(Exception::class)
     fun insertAndGetWord() = runBlocking {
-        val listaDeCompras = ListaDeCompras("NomeLista")
+        val listaDeCompras = ListaDeCompras(22,"Testeee3")
         listaDeComprasDao.insert(listaDeCompras)
         val allWords = listaDeComprasDao.GetListas().first()
         assertEquals(allWords[0].NomeLista, listaDeCompras.NomeLista)
@@ -59,9 +59,9 @@ class ListaDeComprasDaoTest {
     @Test
     @Throws(Exception::class)
     fun getAllWords() = runBlocking {
-        val listaDeCompras = ListaDeCompras("aaa")
+        val listaDeCompras = ListaDeCompras(1,"teste")
         listaDeComprasDao.insert(listaDeCompras)
-        val listaDeCompras2 = ListaDeCompras("bbb")
+        val listaDeCompras2 = ListaDeCompras(2,"Teste2")
         listaDeComprasDao.insert(listaDeCompras2)
         val allWords = listaDeComprasDao.GetListas().first()
         assertEquals(allWords[0].NomeLista, listaDeCompras.NomeLista)
@@ -71,9 +71,9 @@ class ListaDeComprasDaoTest {
     @Test
     @Throws(Exception::class)
     fun deleteAll() = runBlocking {
-        val listaDeCompras = ListaDeCompras("NomeLista")
+        val listaDeCompras = ListaDeCompras(33,"Teste1")
         listaDeComprasDao.insert(listaDeCompras)
-        val listaDeCompras2 = ListaDeCompras("word2")
+        val listaDeCompras2 = ListaDeCompras(44,"Teste22112")
         listaDeComprasDao.insert(listaDeCompras2)
         listaDeComprasDao.deleteAll()
         val allWords = listaDeComprasDao.GetListas().first()
