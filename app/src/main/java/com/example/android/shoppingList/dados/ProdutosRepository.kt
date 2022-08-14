@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.dados
 
 import androidx.annotation.WorkerThread
+import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.Produto
 import kotlinx.coroutines.flow.Flow
 

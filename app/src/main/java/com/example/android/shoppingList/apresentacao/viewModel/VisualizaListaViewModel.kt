@@ -1,11 +1,8 @@
 package com.example.android.shoppingList.apresentacao.viewModel
 
 import androidx.lifecycle.*
-import com.example.android.shoppingList.apresentacao.ItensViewModel
 import com.example.android.shoppingList.apresentacao.model.ItensLista
-import com.example.android.shoppingList.apresentacao.model.Produto
 import com.example.android.shoppingList.dados.ItensListaRepository
-import com.example.android.shoppingList.dados.ProdutosRepository
 import kotlinx.coroutines.launch
 
 class VisualizaListaViewModel(private val repository: ItensListaRepository): ViewModel(){

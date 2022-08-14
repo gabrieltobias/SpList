@@ -1,20 +1,22 @@
 package com.example.android.shoppingList.apresentacao
 
 import androidx.lifecycle.*
+import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.apresentacao.model.Produto
-import com.example.android.shoppingList.dados.ItensListaRepository
+import com.example.android.shoppingList.dados.ListaDeComprasRepository
 import com.example.android.shoppingList.dados.ProdutosRepository
 import kotlinx.coroutines.launch
 
 /**
- Essa classe tem como objetivo definir um
- ViewModel que serve como uma comunicação entre o repositorio e a UI
+Essa classe tem como objetivo definir um
+ViewModel que serve como uma comunicação entre o repositorio e a UI
  */
 
-class ItensViewModel(private val repository: ProdutosRepository) : ViewModel() {
+class ProdutosViewModel(private val repository: ProdutosRepository) : ViewModel() {
 
 
-    val todosOsItens: LiveData<List<Produto>> = repository.todosOsProdutos.asLiveData()
+    val todosOsProdutos: LiveData<List<Produto>> = repository.todosOsProdutos.asLiveData()
+
 
     /**
      * Usando coroutine para inserir os dados
@@ -24,11 +26,11 @@ class ItensViewModel(private val repository: ProdutosRepository) : ViewModel() {
     }
 }
 
-class ItensViewModelFactory(private val repository: ProdutosRepository) : ViewModelProvider.Factory {
+class ProdutoViewModelFactory(private val repository: ProdutosRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ItensViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(ProdutosViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ItensViewModelFactory(repository) as T
+            return ProdutosViewModel(repository) as T
         }
         throw IllegalArgumentException("Classe ViewModel não existe")
     }

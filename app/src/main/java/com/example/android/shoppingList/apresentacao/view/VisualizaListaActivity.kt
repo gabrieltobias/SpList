@@ -3,13 +3,11 @@ package com.example.android.shoppingList.apresentacao.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
-import com.example.android.shoppingList.apresentacao.ItensViewModelFactory
 import com.example.android.shoppingList.apresentacao.viewModel.VisualizaItensViewModelFactory
 import com.example.android.shoppingList.apresentacao.viewModel.VisualizaListaViewModel
 import com.example.android.shoppingList.dados.SpListApplication
@@ -29,8 +27,6 @@ class VisualizaListaActivity : AppCompatActivity() {
         val bundle : Bundle? = intent.extras
         val id = bundle!!.getInt("id")
         var NomeLista = bundle!!.getString("nomeLista")
-        var txtNomeLista = findViewById<TextView>(R.id.txtNomeLista)
-        txtNomeLista.setText(NomeLista)
 
         //Cria o recyclerView usando a classe Adapter
         val adapter = VisualizaListaAdapter()

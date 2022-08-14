@@ -19,19 +19,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/txtNomeLista"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="21dp"
-        android:gravity="left"
-        android:padding="10dp"
-        android:textSize="30dp"
-        android:text="Nome da lista"
-        tools:ignore="MissingConstraints" />
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_item_lista"
         app:layout_constraintBottom_toBottomOf="parent"
