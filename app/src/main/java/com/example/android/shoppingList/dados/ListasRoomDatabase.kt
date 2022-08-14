@@ -20,7 +20,7 @@ abstract class ListasRoomDatabase : RoomDatabase() {
 
     abstract fun listaDao(): ListaDeComprasDao
     abstract fun produtosDao(): ProdutosDao
-    abstract fun carrinhoDao(): ItensListaDao
+    abstract fun itensListaDao(): ItensListaDao
 
     companion object {
         @Volatile
@@ -56,7 +56,7 @@ abstract class ListasRoomDatabase : RoomDatabase() {
                 super.onCreate(db)
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
-                        populateDatabase(database.listaDao(),database.produtosDao(),database.carrinhoDao())
+                        populateDatabase(database.listaDao(),database.produtosDao(),database.itensListaDao())
                     }
                 }
             }

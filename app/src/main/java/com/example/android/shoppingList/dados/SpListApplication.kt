@@ -12,4 +12,5 @@ class SpListApplication : Application() {
     // Cria uma instancia do repositorio com base no DAO
     val repository by lazy { ListaDeComprasRepository(database.listaDao()) }
     val repository_produtos by lazy { ProdutosRepository(database.produtosDao()) }
+    val repository_ItensLista by lazy { ItensListaRepository(database.itensListaDao()) }
 }

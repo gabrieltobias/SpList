@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 class ItensListaRepository(private val itensListaDao: ItensListaDao) {
 
     // Variavel do tipo Flow quando observada notifica sobre as mudanças no dado
-    val retornaItensLista: Flow<List<Produto>>? = itensListaDao.GetItensLista()
+    val retornaItensLista: Flow<List<ItensLista>>? = itensListaDao.GetItensLista()
 
     // Garantindo que não exista nenhum trabalho sendo rodado fora da MainThread
     @Suppress("RedundantSuspendModifier")

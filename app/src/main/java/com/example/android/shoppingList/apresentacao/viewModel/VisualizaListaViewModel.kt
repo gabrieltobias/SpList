@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class VisualizaListaViewModel(private val repository: ItensListaRepository): ViewModel(){
 
-    val todosOsItens: LiveData<List<Produto>> = repository.retornaItensLista!!.asLiveData()
+    val todosOsItens: LiveData<List<ItensLista>> = repository.retornaItensLista!!.asLiveData()
 
 
     /**

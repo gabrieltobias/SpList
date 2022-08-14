@@ -2,6 +2,7 @@ package com.example.android.shoppingList.apresentacao
 
 import androidx.lifecycle.*
 import com.example.android.shoppingList.apresentacao.model.Produto
+import com.example.android.shoppingList.dados.ItensListaRepository
 import com.example.android.shoppingList.dados.ProdutosRepository
 import kotlinx.coroutines.launch
 
@@ -27,7 +28,7 @@ class ItensViewModelFactory(private val repository: ProdutosRepository) : ViewMo
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ItensViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return ItensViewModel(repository) as T
+            return ItensViewModelFactory(repository) as T
         }
         throw IllegalArgumentException("Classe ViewModel não existe")
     }

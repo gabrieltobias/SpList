@@ -10,10 +10,10 @@ import kotlinx.coroutines.flow.Flow
 interface ItensListaDao{
 
     @Query("SELECT * FROM tb_itensLista WHERE fk_listaDeCompras=:FkListaDeCompras")
-    fun GetItensListaById(FkListaDeCompras: Int): Flow<List<Produto>>?
+    fun GetItensListaById(FkListaDeCompras: Int): Flow<List<ItensLista>>?
 
     @Query("SELECT * FROM tb_itensLista")
-    fun GetItensLista(): Flow<List<Produto>>?
+    fun GetItensLista(): Flow<List<ItensLista>>?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(itensLista: ItensLista)

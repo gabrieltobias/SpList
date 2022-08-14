@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.viewModels
+import androidx.lifecycle.observe
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
-import com.example.android.shoppingList.apresentacao.ListaViewModelFactory
-import com.example.android.shoppingList.apresentacao.ListasViewModel
+import com.example.android.shoppingList.apresentacao.ItensViewModelFactory
+import com.example.android.shoppingList.apresentacao.viewModel.VisualizaItensViewModelFactory
+import com.example.android.shoppingList.apresentacao.viewModel.VisualizaListaViewModel
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class VisualizaListaActivity : AppCompatActivity() {
 
-    private val listasViewModel: ListasViewModel by viewModels {
-        ListaViewModelFactory((application as SpListApplication).repository)
+    private val visualizaListaViewModel: VisualizaListaViewModel by viewModels {
+        VisualizaItensViewModelFactory((application as SpListApplication).repository_ItensLista)
     }
 
 
@@ -27,6 +31,18 @@ class VisualizaListaActivity : AppCompatActivity() {
         var NomeLista = bundle!!.getString("nomeLista")
         var txtNomeLista = findViewById<TextView>(R.id.txtNomeLista)
         txtNomeLista.setText(NomeLista)
+
+        //Cria o recyclerView usando a classe Adapter
+        val adapter = VisualizaListaAdapter()
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerViewVizualizaLista)
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Adiciona um observer no LiveData retornado pelo todasAsListas
+        visualizaListaViewModel.todosOsItens.observe(owner = this) { itens ->
+            // Atualiza a cópia em cache do adaptador
+            itens.let { adapter.submitList(it) }
+        }
 
 
         //Botão que adiciona item a lista
