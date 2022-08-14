@@ -21,8 +21,6 @@ class SelecionaProdutosActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seleciona_itens)
 
-
-
         //Cria o recyclerView usando a classe Adapter
         val adapter = ProdutosAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerSelecionaItem)

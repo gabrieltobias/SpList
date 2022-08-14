@@ -15,7 +15,7 @@ class VisualizaListaAdapter(): ListAdapter<ItensLista, VisualizaListaAdapter.Ite
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VisualizaListaAdapter.ItensViewHolder {
         val view: View = LayoutInflater.from(parent.context)
-                .inflate(R.layout.recyclerview_item, parent, false)
+                .inflate(R.layout.recyclerview_item_lista, parent, false)
         return VisualizaListaAdapter.ItensViewHolder.create(parent)
     }
 
@@ -35,7 +35,7 @@ class VisualizaListaAdapter(): ListAdapter<ItensLista, VisualizaListaAdapter.Ite
         companion object {
             fun create(parent: ViewGroup): ItensViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.item_seleciona_produto, parent, false)
+                        .inflate(R.layout.recyclerview_item_lista, parent, false)
 
                 return ItensViewHolder(view)
             }
