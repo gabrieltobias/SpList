@@ -35,7 +35,7 @@ class VisualizaListaActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // Adiciona um observer no LiveData retornado pelo todasAsListas
-        visualizaListaViewModel.todosOsItens.observe(owner = this) { itens ->
+        visualizaListaViewModel.retornaItensLista(id).observe(owner = this) { itens ->
             // Atualiza a cópia em cache do adaptador
             itens.let { adapter.submitList(it) }
         }

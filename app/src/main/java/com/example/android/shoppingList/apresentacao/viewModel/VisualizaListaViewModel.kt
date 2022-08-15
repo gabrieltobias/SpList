@@ -9,12 +9,15 @@ class VisualizaListaViewModel(private val repository: ItensListaRepository): Vie
 
     val todosOsItens: LiveData<List<ItensLista>> = repository.retornaItensLista!!.asLiveData()
 
-
     /**
      * Usando coroutine para inserir os dados
      */
     fun insert(itensLista: ItensLista) = viewModelScope.launch {
         repository.insert(itensLista)
+    }
+
+    fun retornaItensLista(fk_lista: Int): LiveData<List<ItensLista>>{
+        return repository.retornaItensLista(fk_lista).asLiveData()
     }
 }
 

@@ -24,7 +24,6 @@ class VisualizaListaAdapter(): ListAdapter<ItensLista, VisualizaListaAdapter.Ite
         holder.bind(current.NomeProduto)
     }
 
-
     class ItensViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val itensItemView: TextView = itemView.findViewById(R.id.txtViewNomeItem)
 

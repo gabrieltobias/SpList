@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 interface ItensListaDao{
 
     @Query("SELECT * FROM tb_itensLista WHERE fk_listaDeCompras=:FkListaDeCompras")
-    fun GetItensListaById(FkListaDeCompras: Int): Flow<List<ItensLista>>?
+    fun GetItensListaById(FkListaDeCompras: Int): Flow<List<ItensLista>>
 
     @Query("SELECT * FROM tb_itensLista")
     fun GetItensLista(): Flow<List<ItensLista>>?

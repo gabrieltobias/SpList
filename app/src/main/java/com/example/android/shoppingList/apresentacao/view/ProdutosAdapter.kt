@@ -3,6 +3,7 @@ package com.example.android.shoppingList.apresentacao.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -35,10 +36,10 @@ class ProdutosAdapter(): ListAdapter<Produto, ProdutosAdapter.ItensViewHolder>(I
             fun create(parent: ViewGroup): ItensViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                         .inflate(R.layout.item_seleciona_produto, parent, false)
-
                 return ItensViewHolder(view)
             }
         }
+
     }
 
     companion object {

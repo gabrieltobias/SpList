@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.dados
 
 import androidx.annotation.WorkerThread
+import androidx.lifecycle.LiveData
 import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.Produto
 import kotlinx.coroutines.flow.Flow
@@ -15,6 +16,10 @@ class ItensListaRepository(private val itensListaDao: ItensListaDao) {
     @WorkerThread
     suspend fun insert(itensLista: ItensLista) {
         itensListaDao.insert(itensLista)
+    }
+    //Função que retorna os itens de uma lista especifica
+    fun retornaItensLista(fk_lista : Int) : Flow<List<ItensLista>> {
+        return itensListaDao.GetItensListaById(fk_lista)
     }
 
 }
