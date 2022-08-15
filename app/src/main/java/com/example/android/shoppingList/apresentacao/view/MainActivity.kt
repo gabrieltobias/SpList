@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         //Função para visualizar uma lista a partir de um item
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                //Toast.makeText(this@MainActivity, "Item n $position", Toast.LENGTH_LONG).show()
                 //Criando o intent para o VisualizaLista
                 val intent = Intent(this@MainActivity, VisualizaListaActivity::class.java)
 
@@ -69,8 +68,6 @@ class MainActivity : AppCompatActivity() {
             ): Boolean {
                 return true
             }
-
-
 
             //Deletando lista quando o usuário faz o swipe
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {

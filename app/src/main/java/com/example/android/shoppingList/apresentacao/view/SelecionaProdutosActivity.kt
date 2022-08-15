@@ -3,7 +3,7 @@ package com.example.android.shoppingList.apresentacao.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.CheckBox
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +12,6 @@ import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ProdutoViewModelFactory
 import com.example.android.shoppingList.apresentacao.ProdutosViewModel
 import com.example.android.shoppingList.dados.SpListApplication
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class SelecionaProdutosActivity : AppCompatActivity() {
 
@@ -30,7 +29,14 @@ class SelecionaProdutosActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        //Função para visualizar uma lista a partir de um item
+        adapter.setOnItemClickListener(object : ProdutosAdapter.onProdutoClickListener{
+            override fun onItemClick(position: Int) {
+                val produtoAtual = adapter.currentList.get(position)
 
+                Toast.makeText(this@SelecionaProdutosActivity, "Clicou ${produtoAtual.NomeProduto}", Toast.LENGTH_LONG).show()
+            }
+        })
 
 
         // Adiciona um observer no LiveData retornado pelo todasAsListas
@@ -39,12 +45,9 @@ class SelecionaProdutosActivity : AppCompatActivity() {
             itens.let { adapter.submitList(it) }
         }
 
-        //Botão que salva os itens na lista
-        val btnSalvarItens = findViewById<FloatingActionButton>(R.id.btn_salvar_itens_lista)
-        btnSalvarItens.setOnClickListener {
-
-        }
 
 
     }
+
+
 }
