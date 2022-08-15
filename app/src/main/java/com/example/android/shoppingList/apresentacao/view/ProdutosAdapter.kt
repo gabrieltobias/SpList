@@ -40,7 +40,6 @@ class ProdutosAdapter(): ListAdapter<Produto, ProdutosAdapter.ItensViewHolder>(I
 
     class ItensViewHolder(itemView: View, listener: onProdutoClickListener) : RecyclerView.ViewHolder(itemView) {
         private val itensItemView: TextView = itemView.findViewById(R.id.txtViewNomeItem)
-
         fun bind(text: String?) {
             itensItemView.text = text
         }
