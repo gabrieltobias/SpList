@@ -89,8 +89,6 @@ class MainActivity : AppCompatActivity() {
             startActivityForResult(intent, novaListaActivityRequestCode)
         }
 
-
-
         // Adiciona um observer no LiveData retornado pelo todasAsListas
         listasViewModel.todasAsListas.observe(owner = this) { listas ->
             // Atualiza a cópia em cache do adaptador

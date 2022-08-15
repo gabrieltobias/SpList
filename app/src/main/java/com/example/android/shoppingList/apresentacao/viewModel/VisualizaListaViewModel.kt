@@ -2,6 +2,7 @@ package com.example.android.shoppingList.apresentacao.viewModel
 
 import androidx.lifecycle.*
 import com.example.android.shoppingList.apresentacao.model.ItensLista
+import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.ItensListaRepository
 import kotlinx.coroutines.launch
 
@@ -18,6 +19,10 @@ class VisualizaListaViewModel(private val repository: ItensListaRepository): Vie
 
     fun retornaItensLista(fk_lista: Int): LiveData<List<ItensLista>>{
         return repository.retornaItensLista(fk_lista).asLiveData()
+    }
+
+    fun deletaItemLista(itensLista: ItensLista) = viewModelScope.launch {
+        repository.deletaItemLista(itensLista)
     }
 }
 

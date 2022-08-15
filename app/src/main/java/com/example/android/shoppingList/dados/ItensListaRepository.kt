@@ -3,6 +3,7 @@ package com.example.android.shoppingList.dados
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import com.example.android.shoppingList.apresentacao.model.ItensLista
+import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.apresentacao.model.Produto
 import kotlinx.coroutines.flow.Flow
 
@@ -21,5 +22,7 @@ class ItensListaRepository(private val itensListaDao: ItensListaDao) {
     fun retornaItensLista(fk_lista : Int) : Flow<List<ItensLista>> {
         return itensListaDao.GetItensListaById(fk_lista)
     }
+
+    suspend fun deletaItemLista(itensLista: ItensLista) = itensListaDao.deletaItemLista(itensLista)
 
 }

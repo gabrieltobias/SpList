@@ -3,8 +3,10 @@ package com.example.android.shoppingList.apresentacao.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
@@ -38,6 +40,31 @@ class VisualizaListaActivity : AppCompatActivity() {
         visualizaListaViewModel.retornaItensLista(id).observe(owner = this) { itens ->
             // Atualiza a cópia em cache do adaptador
             itens.let { adapter.submitList(it) }
+        }
+
+        //Criando um objeto ItemTouchHelper
+        val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
+                ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+                ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ){
+            override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+            ): Boolean {
+                return true
+            }
+
+            //Deletando lista quando o usuário faz o swipe
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val pos = viewHolder.adapterPosition
+                val itemAtual = adapter.currentList
+                visualizaListaViewModel.deletaItemLista(itemAtual.get(pos))
+                Toast.makeText(this@VisualizaListaActivity,"Item removido", Toast.LENGTH_LONG).show()
+            }
+        }
+        ItemTouchHelper(itemTouchHelperCallback).apply {
+            attachToRecyclerView(recyclerView)
         }
 
 
