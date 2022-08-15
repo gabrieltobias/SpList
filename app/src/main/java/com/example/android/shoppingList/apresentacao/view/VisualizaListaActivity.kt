@@ -45,6 +45,8 @@ class VisualizaListaActivity : AppCompatActivity() {
         val btnAddItemLista = findViewById<FloatingActionButton>(R.id.add_item_lista)
         btnAddItemLista.setOnClickListener {
             val intent = Intent(this@VisualizaListaActivity,SelecionaProdutosActivity::class.java)
+            intent.putExtra("nomeLista",NomeLista)
+            intent.putExtra("id_lista", id)
             startActivity(intent)
         }
     }
