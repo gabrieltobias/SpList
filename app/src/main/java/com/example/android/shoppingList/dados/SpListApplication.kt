@@ -13,4 +13,5 @@ class SpListApplication : Application() {
     val repository by lazy { ListaDeComprasRepository(database.listaDao()) }
     val repository_produtos by lazy { ProdutosRepository(database.produtosDao()) }
     val repository_ItensLista by lazy { ItensListaRepository(database.itensListaDao()) }
+    val repository_Usuarios by lazy { UsuariosRepository(database.usuarioDao()) }
 }
