@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +20,7 @@ import com.example.android.shoppingList.apresentacao.ListasViewModel
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
 import com.google.android.material.snackbar.Snackbar
 import kotlin.random.Random.Default.nextInt
@@ -30,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -41,10 +42,16 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val btnLogin = findViewById<Button>(R.id.btn_login)
-        btnLogin.setOnClickListener {
-            val intent2 = Intent(this@MainActivity, Login::class.java)
-            startActivity(intent2)
+        val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
+        val navView : NavigationView = findViewById(R.id.nav_view)
+        val intent2 = Intent(this@MainActivity, Login::class.java)
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_home -> Toast.makeText(applicationContext, "Home",Toast.LENGTH_LONG).show()
+                R.id.nav_login -> startActivity(intent2)
+            }
+            true
         }
 
 
@@ -62,8 +69,6 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         })
-
-
 
         //Criando um objeto ItemTouchHelper
         val itemTouchHelperCallback = object : ItemTouchHelper.SimpleCallback(
