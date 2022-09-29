@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-
-
         //Função para visualizar uma lista a partir de um item
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {

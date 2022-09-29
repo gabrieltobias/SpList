@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Login"
+            android:name=".apresentacao.view.Login"
             android:exported="false" />
         <activity
             android:name=".apresentacao.view.SelecionaProdutosActivity"
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".apresentacao.view.NovaListaActivity" />
-        <activity android:name=".apresentacao.view.Login"/>
+        <activity android:name=".apresentacao.view.RegistrarUsuario"/>
     </application>
 
 </manifest>

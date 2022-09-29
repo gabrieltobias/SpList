@@ -19,7 +19,7 @@
         android:id="@+id/user_name"
         android:paddingTop="8dp"
         android:textSize="20dp"
-        android:text="Jhon Doe"
+        android:text="Convidado"
         android:textColor="@android:color/black"
         android:textStyle="bold"/>
     <View
