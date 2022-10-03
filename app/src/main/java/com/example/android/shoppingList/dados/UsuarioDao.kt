@@ -16,5 +16,5 @@ interface UsuarioDao{
     fun getAllUsers(): LiveData<List<Usuario>>
 
     @Query("SELECT * FROM tb_usuario WHERE Username LIKE :userName")
-    fun getUsername(userName: String): Usuario?
+    suspend fun getUsername(userName: String): Usuario?
 }

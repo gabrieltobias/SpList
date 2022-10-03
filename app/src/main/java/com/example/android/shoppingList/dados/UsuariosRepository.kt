@@ -1,7 +1,10 @@
 package com.example.android.shoppingList.dados
 
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.apresentacao.model.Usuario
+import kotlinx.coroutines.flow.Flow
 
 class UsuariosRepository(private val usuarioDao: UsuarioDao) {
 
@@ -10,8 +13,8 @@ class UsuariosRepository(private val usuarioDao: UsuarioDao) {
     suspend fun insert(usuario: Usuario){
         return usuarioDao.insert(usuario)
     }
-
-    suspend fun getUserName(userName: String): Usuario?{
+    suspend fun getUserName(userName: String):Usuario?{
         return usuarioDao.getUsername(userName)
     }
+
 }

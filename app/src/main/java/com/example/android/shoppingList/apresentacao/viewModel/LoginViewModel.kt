@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.apresentacao.viewModel
 
 import androidx.lifecycle.*
+import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.apresentacao.model.Usuario
 import com.example.android.shoppingList.dados.UsuariosRepository
 import kotlinx.coroutines.launch
@@ -8,19 +9,13 @@ import kotlinx.coroutines.launch
 class LoginViewModel(private val repository: UsuariosRepository) : ViewModel() {
 
     val users = repository.usuarios
-
-    val inputUsername = MutableLiveData<String>()
-
+    val inputUsername = String()
     val inputPassword = MutableLiveData<String>()
 
-    //Function triggered When the Login Button is Clicked, Via Binding.
-    fun loginButton() {
-        //-------Logic for the code
+    fun getUsername(userName: String) = viewModelScope.launch {
+        repository.getUserName(userName)
     }
 
-    fun signUP() {
-        //navigate to the Register Fragment
-    }
 }
 
 class LoginViewModelFactory(private val repository: UsuariosRepository) : ViewModelProvider.Factory {
