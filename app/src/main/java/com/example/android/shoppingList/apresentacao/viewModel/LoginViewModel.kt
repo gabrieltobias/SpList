@@ -1,21 +1,29 @@
 package com.example.android.shoppingList.apresentacao.viewModel
 
+import android.app.Application
 import androidx.lifecycle.*
+import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
+import com.example.android.shoppingList.apresentacao.model.Produto
 import com.example.android.shoppingList.apresentacao.model.Usuario
+import com.example.android.shoppingList.dados.ListaDeComprasRepository
+import com.example.android.shoppingList.dados.SpListApplication
 import com.example.android.shoppingList.dados.UsuariosRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: UsuariosRepository) : ViewModel() {
+    private var getAllDatas: LiveData<List<Usuario>>
 
-    val users = repository.usuarios
-    val inputUsername = String()
-    val inputPassword = MutableLiveData<String>()
-
-    fun getUsername(userName: String) = viewModelScope.launch {
-        repository.getUserName(userName)
+    init{
+        getAllDatas = repository.getAllData()!!
     }
-
+    fun insert(data: Usuario){
+        repository.insertUser(data)
+    }
+    fun getGetAllData(): LiveData<List<Usuario>>{
+        return getAllDatas
+    }
 }
 
 class LoginViewModelFactory(private val repository: UsuariosRepository) : ViewModelProvider.Factory {

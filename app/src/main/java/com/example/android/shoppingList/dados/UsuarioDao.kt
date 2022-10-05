@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.dados
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.Usuario
@@ -10,11 +11,11 @@ import kotlinx.coroutines.flow.Flow
 interface UsuarioDao{
 
     @Insert
-    suspend fun insert(usuario: Usuario)
+    fun insert(usuario: Usuario)
 
-    @Query("SELECT * FROM tb_usuario ORDER BY userId DESC")
-    fun getAllUsers(): LiveData<List<Usuario>>
+    @Query("select * from tb_usuario")
+    fun getDetails(): LiveData<List<Usuario>>
 
-    @Query("SELECT * FROM tb_usuario WHERE Username LIKE :userName")
-    suspend fun getUsername(userName: String): Usuario?
+    @Query("DELETE FROM tb_usuario WHERE userId = :id")
+    fun deleteByUserId(id: Int)
 }

@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
 data class Usuario(
         @PrimaryKey(autoGenerate = true)
         var userId: Int = 0,
-        @ColumnInfo(name = "PrimeiroNome") val PrimeiroNome: String,
-        @ColumnInfo(name = "SegundoNome") val SegundoNome: String,
-        @ColumnInfo(name = "Username") val Username: String,
-        @ColumnInfo(name = "Senha") val Senha: String,
-        @ColumnInfo(name = "Nivel") val Nivel: String)
+        @ColumnInfo(name = "PrimeiroNome") var PrimeiroNome: String,
+        @ColumnInfo(name = "SegundoNome") var SegundoNome: String,
+        @ColumnInfo(name = "Username") var Username: String,
+        @ColumnInfo(name = "Senha") var Senha: String,
+        @ColumnInfo(name = "Nivel") var Nivel: String)

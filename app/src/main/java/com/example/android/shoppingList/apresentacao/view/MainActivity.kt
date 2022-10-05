@@ -3,12 +3,9 @@ package com.example.android.shoppingList.apresentacao.view
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -21,9 +18,8 @@ import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_LONG
-import com.google.android.material.snackbar.Snackbar
 import kotlin.random.Random.Default.nextInt
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,9 +28,22 @@ class MainActivity : AppCompatActivity() {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //Verificando se o usuario esta logado
+        val intent_login = intent
+        val extras = intent_login.extras
+        if (extras != null) {
+            if (extras.containsKey("Nome")) {
+                val nomeUsuario = extras.getString("Nome")
+                val idUsuario = extras.getInt("idUsuario")
+                Toast.makeText(applicationContext, "$nomeUsuario", Toast.LENGTH_LONG).show()
+            }
+        }
 
         //Cria o recyclerView usando a classe Adapter
         val adapter = ListasAdapter()
