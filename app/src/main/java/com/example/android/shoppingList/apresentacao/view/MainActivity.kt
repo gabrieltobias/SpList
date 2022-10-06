@@ -1,11 +1,19 @@
 package com.example.android.shoppingList.apresentacao.view
 
 import android.app.Activity
+import android.content.ClipData
+import android.content.ClipData.Item
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -34,17 +42,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //Verificando se o usuario esta logado
-        val intent_login = intent
-        val extras = intent_login.extras
-        if (extras != null) {
-            if (extras.containsKey("Nome")) {
-                val nomeUsuario = extras.getString("Nome")
-                val idUsuario = extras.getInt("idUsuario")
-                Toast.makeText(applicationContext, "$nomeUsuario", Toast.LENGTH_LONG).show()
-            }
-        }
-
         //Cria o recyclerView usando a classe Adapter
         val adapter = ListasAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
@@ -53,6 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
+        val header : View = navView.getHeaderView(0)
         val intent2 = Intent(this@MainActivity, Login::class.java)
 
         navView.setNavigationItemSelectedListener {
@@ -61,6 +59,19 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_login -> startActivity(intent2)
             }
             true
+        }
+
+        //Verificando se o usuario esta logado
+        val intent_login = intent
+        val extras = intent_login.extras
+        if (extras != null) {
+            if (extras.containsKey("Nome")) {
+                val nomeUsuario = extras.getString("Nome")
+                val idUsuario = extras.getInt("idUsuario")
+                val txtNomeUser = header.findViewById<TextView>(R.id.user_name)
+                txtNomeUser.setText(nomeUsuario)
+                //Remover item de login do menu lateral
+            }
         }
 
         //Função para visualizar uma lista a partir de um item
@@ -115,7 +126,11 @@ class MainActivity : AppCompatActivity() {
             // Atualiza a cópia em cache do adaptador
             listas.let { adapter.submitList(it) }
         }
+
+        //txtUserName.text = "sasassa"
+        println("caiuuuuuuuuuuuuuuuuuu")
     }
+
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
@@ -135,4 +150,5 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
     }
+
 }

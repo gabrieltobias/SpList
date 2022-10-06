@@ -6,14 +6,8 @@
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home"/>
-
     <item
-        android:title="Profile">
-        <menu>
-            <item
-                android:id="@+id/nav_login"
-                android:title="Login"
-                android:icon="@drawable/ic_baseline_login_24"/>
-        </menu>
-    </item>
+        android:id="@+id/nav_login"
+        android:title="Login"
+        android:icon="@drawable/ic_baseline_login_24"/>
 </menu>
