@@ -18,9 +18,10 @@ class LoginViewModel(private val repository: UsuariosRepository) : ViewModel() {
     init{
         getAllDatas = repository.getAllData()!!
     }
-    fun insert(data: Usuario){
-        repository.insertUser(data)
+    fun insert(data: Usuario) = viewModelScope.launch{
+        repository.insertData(data)
     }
+
     fun getGetAllData(): LiveData<List<Usuario>>{
         return getAllDatas
     }

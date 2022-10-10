@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
         val header : View = navView.getHeaderView(0)
         val intent2 = Intent(this@MainActivity, Login::class.java)
 
+
         navView.setNavigationItemSelectedListener {
             when(it.itemId){
                 R.id.nav_home -> Toast.makeText(applicationContext, "Home",Toast.LENGTH_LONG).show()
@@ -70,7 +71,6 @@ class MainActivity : AppCompatActivity() {
                 val idUsuario = extras.getInt("idUsuario")
                 val txtNomeUser = header.findViewById<TextView>(R.id.user_name)
                 txtNomeUser.setText(nomeUsuario)
-                //Remover item de login do menu lateral
             }
         }
 
@@ -126,9 +126,6 @@ class MainActivity : AppCompatActivity() {
             // Atualiza a cópia em cache do adaptador
             listas.let { adapter.submitList(it) }
         }
-
-        //txtUserName.text = "sasassa"
-        println("caiuuuuuuuuuuuuuuuuuu")
     }
 
 

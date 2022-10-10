@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 //Tabela que armazena as listas
 @Entity(tableName = "tb_usuario")
 data class Usuario(
-        @PrimaryKey(autoGenerate = true)
-        var userId: Int = 0,
+        @PrimaryKey val id: Int,
         @ColumnInfo(name = "PrimeiroNome") var PrimeiroNome: String,
         @ColumnInfo(name = "SegundoNome") var SegundoNome: String,
         @ColumnInfo(name = "Username") var Username: String,

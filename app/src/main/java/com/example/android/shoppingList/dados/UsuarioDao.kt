@@ -10,12 +10,12 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UsuarioDao{
 
-    @Insert
-    fun insert(usuario: Usuario)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUserData(usuario: Usuario)
 
     @Query("select * from tb_usuario")
     fun getDetails(): LiveData<List<Usuario>>
 
-    @Query("DELETE FROM tb_usuario WHERE userId = :id")
+    @Query("DELETE FROM tb_usuario WHERE id = :id")
     fun deleteByUserId(id: Int)
 }

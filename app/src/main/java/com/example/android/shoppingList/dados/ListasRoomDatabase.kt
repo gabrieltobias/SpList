@@ -133,7 +133,7 @@ abstract class ListasRoomDatabase : RoomDatabase() {
             itensListaDao.insert(item_carrinho_5)
 
             var default_user: Usuario = Usuario(1,"Jhon", "Doe","teste","123","admin")
-            usuarioDao.insert(default_user)
+            usuarioDao.insertUserData(default_user)
 
 
 

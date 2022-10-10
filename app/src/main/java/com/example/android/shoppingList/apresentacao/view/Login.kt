@@ -68,7 +68,7 @@ class Login : AppCompatActivity() {
 
                                     val intent = Intent(this@Login, MainActivity::class.java)
                                     intent.putExtra("Nome",userObject[i].PrimeiroNome)
-                                    intent.putExtra("idUsuario",userObject[i].userId)
+                                    intent.putExtra("idUsuario",userObject[i].id)
                                     // start your next activity
                                     startActivity(intent)
 

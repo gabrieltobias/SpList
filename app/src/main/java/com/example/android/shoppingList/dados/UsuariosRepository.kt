@@ -21,18 +21,22 @@ class UsuariosRepository(private val usuarioDao: UsuarioDao) {
         return allData
     }
 
-    fun insertUser(data: Usuario) {
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
+    suspend fun insertData(data: Usuario) {
         usuarioDao?.let { LoginInsertion(it).execute(data) }
     }
 
     private class LoginInsertion(private val daoAccess: UsuarioDao) :
         AsyncTask<Usuario, Void, Void>() {
-        override fun doInBackground(vararg data: Usuario): Void? {
-            daoAccess.insert(data[0])
-            return null
-        }
-    }
 
+        override fun doInBackground(vararg data: Usuario): Void? {
+            daoAccess.insertUserData(data[0])
+            return null
+
+        }
+
+    }
 
 
 }
