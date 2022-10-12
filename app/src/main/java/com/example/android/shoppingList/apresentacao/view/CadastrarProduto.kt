@@ -24,6 +24,20 @@ class CadastrarProduto: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastrar_produto)
 
+        //Verificando se o usuario esta logado
+        val intent_mainActivity = intent
+        val extras = intent_mainActivity.extras
+
+        var nomeUsuario = "Convidado"
+        var idUsuario = 1
+
+        if (extras != null) {
+            nomeUsuario = extras.getString("nome_usuario")!!
+            idUsuario = extras.getInt("id_usuario")
+        }
+
+
+
         val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
         val et_nomeProduto = findViewById<EditText>(R.id.nomeTextField)
 
@@ -54,6 +68,8 @@ class CadastrarProduto: AppCompatActivity() {
             if(validation()){
                 var idProduto = Random.nextInt(1000000)
                 val intent_mainActivity = Intent(this@CadastrarProduto, MainActivity::class.java)
+                intent_mainActivity.putExtra("Nome", nomeUsuario)
+                intent_mainActivity.putExtra("idUsuario", idUsuario)
                 val produto = Produto(idProduto,et_nomeProduto.text.toString(),categoria)
                 produtoViewModel.insert(produto)
                 Toast.makeText(applicationContext,"Produto cadastrado com sucesso",Toast.LENGTH_SHORT).show()

@@ -20,26 +20,33 @@ class GerenciarProdutos: AppCompatActivity() {
         ProdutoViewModelFactory((application as SpListApplication).repository_produtos)
     }
 
-    override fun onBackPressed() {
-        // code here to show dialog
-        super.onBackPressed()
-        val intentMainActivity = Intent(this@GerenciarProdutos, MainActivity::class.java)
-        startActivity(intentMainActivity)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_gerencia_produtos)
+
+        //Verificando se o usuario esta logado
+        val intent_mainActivity = intent
+        val extras = intent_mainActivity.extras
+
+        var nomeUsuario = "Convidado"
+        var idUsuario = 1
+
+        if (extras != null) {
+            nomeUsuario = extras.getString("nome_usuario")!!
+            idUsuario = extras.getInt("id_usuario")
+        }
+
+
 
         //Cria o recyclerView usando a classe Adapter
         val adapter = ProdutosAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerGerenciaProdutos)
         val btnAddProduto = findViewById<FloatingActionButton>(R.id.btnAddProduto)
         val intentEditaProduto = intent
-        val extras = intentEditaProduto.extras
+        val extras2 = intentEditaProduto.extras
 
-        if (extras != null) {
-            if (extras.containsKey("deletouProduto")) {
+        if (extras2 != null) {
+            if (extras2.containsKey("deletouProduto")) {
                 Toast.makeText(applicationContext,"Produto deletado com sucesso!",Toast.LENGTH_SHORT).show()
             }
         }
@@ -57,6 +64,8 @@ class GerenciarProdutos: AppCompatActivity() {
                 intentEditarProduto.putExtra("id_produto",produtoAtual.id)
                 intentEditarProduto.putExtra("nome_produto",produtoAtual.NomeProduto)
                 intentEditarProduto.putExtra("categoria_produto",produtoAtual.CategoriaItem)
+                intentEditarProduto.putExtra("nome_usuario", nomeUsuario)
+                intentEditarProduto.putExtra("id_usuario", idUsuario)
                 startActivity(intentEditarProduto)
             }
         })
@@ -72,6 +81,27 @@ class GerenciarProdutos: AppCompatActivity() {
             val intentCadastrarProduto = Intent(this@GerenciarProdutos,CadastrarProduto::class.java)
             startActivity(intentCadastrarProduto)
         }
+    }
+
+    override fun onBackPressed() {
+        //Verificando se o usuario esta logado
+        val intent_mainActivity = intent
+        val extras = intent_mainActivity.extras
+
+        var nomeUsuario = "Convidado"
+        var idUsuario = 1
+
+        if (extras != null) {
+            nomeUsuario = extras.getString("nome_usuario")!!
+            idUsuario = extras.getInt("id_usuario")
+        }
+
+        // code here to show dialog
+        super.onBackPressed()
+        val intentMainActivity = Intent(this@GerenciarProdutos, MainActivity::class.java)
+        intentMainActivity.putExtra("Nome", nomeUsuario)
+        intentMainActivity.putExtra("idUsuario", idUsuario)
+        startActivity(intentMainActivity)
     }
 
 }

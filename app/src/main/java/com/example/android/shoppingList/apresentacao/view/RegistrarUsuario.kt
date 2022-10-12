@@ -85,7 +85,6 @@ class RegistrarUsuario : AppCompatActivity() {
                             val user = Usuario(userId,primeiroNome,segundoNome,usuario,senha,"Usuario")
                             loginViewModel.insert(user)
                             Toast.makeText(applicationContext, "Usuario criado com sucesso",Toast.LENGTH_LONG).show()
-                            println("buuuuuug")
                         }
                     }
                 })
@@ -102,7 +101,6 @@ class RegistrarUsuario : AppCompatActivity() {
                 val user = Usuario(userId,primeiroNome,segundoNome,usuario,senha,"Usuario")
                 loginViewModel.insert(user)
                 Toast.makeText(applicationContext, "Usuario criado com sucesso",Toast.LENGTH_LONG).show()
-                println("buuuuuug")
                 //Redirect para a página de login
                 val intent = Intent(this@RegistrarUsuario, Login::class.java)
                 startActivity(intent)

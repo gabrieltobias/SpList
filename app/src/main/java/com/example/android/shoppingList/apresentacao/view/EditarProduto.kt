@@ -23,10 +23,22 @@ class EditarProduto: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edita_produto)
 
+        //Verificando se o usuario esta logado
+        val intent_gerProduto = intent
+        val extras2 = intent_gerProduto.extras
+
+        var nomeUsuario = "Convidado"
+        var idUsuario = 1
+
+        if (extras2 != null) {
+            nomeUsuario = extras2.getString("nome_usuario")!!
+            idUsuario = extras2.getInt("id_usuario")
+        }
+
 
         val et_nomeProduto = findViewById<EditText>(R.id.nomeTextField)
 
-        //Verificando se o usuario esta logado
+
         val intent_gerenciaProduto = intent
         val extras = intent_gerenciaProduto.extras
         val id_produto = extras?.getInt("id_produto")
@@ -35,6 +47,8 @@ class EditarProduto: AppCompatActivity() {
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnDeletarProduto = findViewById<ImageButton>(R.id.btnDeletaProduto)
         val intentGerenciaProdutos = Intent(this@EditarProduto,GerenciarProdutos::class.java)
+        intentGerenciaProdutos.putExtra("nome_usuario", nomeUsuario)
+        intentGerenciaProdutos.putExtra("id_usuario", idUsuario)
         et_nomeProduto.setText(nomeProduto)
 
         //Combobox de categoria
@@ -65,7 +79,7 @@ class EditarProduto: AppCompatActivity() {
                 val produto = Produto(id_produto!!,et_nomeProduto.text.toString(),spinnerCategoria.getSelectedItem().toString())
                 produtoViewModel.insert(produto)
                 Toast.makeText(applicationContext,"Produto atualizado com sucesso", Toast.LENGTH_SHORT).show()
-                //startActivity(intent_mainActivity)
+                startActivity(intentGerenciaProdutos)
             }
         }
 

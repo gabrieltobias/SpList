@@ -1,19 +1,13 @@
 package com.example.android.shoppingList.apresentacao.view
 
 import android.app.Activity
-import android.content.ClipData
-import android.content.ClipData.Item
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -52,20 +46,10 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
         val navView : NavigationView = findViewById(R.id.nav_view)
         val header : View = navView.getHeaderView(0)
-        val intent2 = Intent(this@MainActivity, Login::class.java)
+        val intentLogin = Intent(this@MainActivity, Login::class.java)
         val intentProduto = Intent(this@MainActivity, CadastrarProduto::class.java)
         val intentGerProduto = Intent(this@MainActivity, GerenciarProdutos::class.java)
 
-
-        navView.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.nav_home -> Toast.makeText(applicationContext, "Home",Toast.LENGTH_LONG).show()
-                R.id.nav_login -> startActivity(intent2)
-                R.id.cdastrar_produto -> startActivity(intentProduto)
-                R.id.gerenciar_produtos -> startActivity(intentGerProduto)
-            }
-            true
-        }
 
         //Verificando se o usuario esta logado
         val intent_login = intent
@@ -77,7 +61,22 @@ class MainActivity : AppCompatActivity() {
                 idUsuario = extras.getInt("idUsuario")
                 val txtNomeUser = header.findViewById<TextView>(R.id.user_name)
                 txtNomeUser.setText(nomeUsuario)
+                intentProduto.putExtra("id_usuario", idUsuario)
+                intentProduto.putExtra("nome_usuario", nomeUsuario)
+                intentGerProduto.putExtra("id_usuario", idUsuario)
+                intentGerProduto.putExtra("nome_usuario", nomeUsuario)
+
             }
+        }
+
+        navView.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_home -> Toast.makeText(applicationContext, "Home",Toast.LENGTH_LONG).show()
+                R.id.nav_login -> startActivity(intentLogin)
+                R.id.cdastrar_produto -> startActivity(intentProduto)
+                R.id.gerenciar_produtos -> startActivity(intentGerProduto)
+            }
+            true
         }
 
         //Função para visualizar uma lista a partir de um item
