@@ -21,7 +21,7 @@ import kotlin.random.Random
 
 class RegistrarUsuario : AppCompatActivity() {
 
-    var isExist = false
+    //var isExist = false
 
     private val loginViewModel: LoginViewModel by viewModels {
         LoginViewModelFactory((application as SpListApplication).repository_Usuarios)

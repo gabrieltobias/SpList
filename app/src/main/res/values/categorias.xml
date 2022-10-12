@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categorias_array">
+        <item>Outro</item>
+        <item>Latcinios</item>
+        <item>Carnes</item>
+        <item>Bebidas</item>
+        <item>Higiene</item>
+        <item>Produtos de Limpeza</item>
+        <item>Mercearia</item>
+        <item>Hortifruti</item>
+    </string-array>
+
+</resources>
