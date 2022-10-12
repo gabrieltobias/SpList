@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.dados
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -26,4 +27,7 @@ interface ProdutosDao{
 
     @Query("DELETE FROM tb_produtos")
     suspend fun deleteAll()
+
+    @Delete
+    suspend fun deletaProduto(produto: Produto)
 }

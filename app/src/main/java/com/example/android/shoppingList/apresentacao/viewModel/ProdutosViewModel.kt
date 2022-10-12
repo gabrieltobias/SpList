@@ -27,6 +27,10 @@ class ProdutosViewModel(private val repository: ProdutosRepository) : ViewModel(
     fun updateProduto(produto: Produto) = viewModelScope.launch {
         repository.updateProduto(produto)
     }
+
+    fun deletaProduto(produto: Produto) = viewModelScope.launch {
+        repository.deletaProduto(produto)
+    }
 }
 
 class ProdutoViewModelFactory(private val repository: ProdutosRepository) : ViewModelProvider.Factory {

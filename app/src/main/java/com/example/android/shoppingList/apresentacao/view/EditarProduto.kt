@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ProdutoViewModelFactory
@@ -32,6 +33,8 @@ class EditarProduto: AppCompatActivity() {
         val nomeProduto = extras?.getString("nome_produto")
         val categoriaProduto = extras?.getString("categoria_produto")
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
+        val btnDeletarProduto = findViewById<ImageButton>(R.id.btnDeletaProduto)
+        val intentGerenciaProdutos = Intent(this@EditarProduto,GerenciarProdutos::class.java)
         et_nomeProduto.setText(nomeProduto)
 
         //Combobox de categoria
@@ -66,6 +69,29 @@ class EditarProduto: AppCompatActivity() {
             }
         }
 
+        btnDeletarProduto.setOnClickListener {
+            if (validation()) {
+                val produto = Produto(
+                    id_produto!!,
+                    et_nomeProduto.text.toString(),
+                    spinnerCategoria.getSelectedItem().toString()
+                )
+                val builder = AlertDialog.Builder(this@EditarProduto)
+                builder.setMessage("Deseja deletar esse produto?")
+                    .setCancelable(false)
+                    .setPositiveButton("Sim") { dialog, id ->
+                        produtoViewModel.deletaProduto(produto)
+                        intentGerenciaProdutos.putExtra("deletouProduto",1)
+                        startActivity(intentGerenciaProdutos)
+                    }
+                    .setNegativeButton("Não") { dialog, id ->
+                        // Dismiss the dialog
+                        dialog.dismiss()
+                    }
+                val alert = builder.create()
+                alert.show()
+            }
+        }
 
     }
 }

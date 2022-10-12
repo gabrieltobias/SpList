@@ -2,11 +2,8 @@ package com.example.android.shoppingList.apresentacao.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.widget.Button
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,15 +11,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android.shoppingList.R
 import com.example.android.shoppingList.apresentacao.ProdutoViewModelFactory
 import com.example.android.shoppingList.apresentacao.ProdutosViewModel
-import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlin.random.Random
 
 class GerenciarProdutos: AppCompatActivity() {
 
     private val produtosViewModel: ProdutosViewModel by viewModels {
         ProdutoViewModelFactory((application as SpListApplication).repository_produtos)
+    }
+
+    override fun onBackPressed() {
+        // code here to show dialog
+        super.onBackPressed()
+        val intentMainActivity = Intent(this@GerenciarProdutos, MainActivity::class.java)
+        startActivity(intentMainActivity)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,16 @@ class GerenciarProdutos: AppCompatActivity() {
         val adapter = ProdutosAdapter()
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerGerenciaProdutos)
         val btnAddProduto = findViewById<FloatingActionButton>(R.id.btnAddProduto)
+        val intentEditaProduto = intent
+        val extras = intentEditaProduto.extras
+
+        if (extras != null) {
+            if (extras.containsKey("deletouProduto")) {
+                Toast.makeText(applicationContext,"Produto deletado com sucesso!",Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        val id_produto = extras?.getInt("id_produto")
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
         val intentEditarProduto = Intent(this@GerenciarProdutos, EditarProduto::class.java)

@@ -122,13 +122,25 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
-        android:onClick="@{()->myLoginViewModel.loginButton()}"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCategoriaProduto" />
 
+    <ImageButton
+        android:id="@+id/btnDeletaProduto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:text="Deletar"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="@+id/btnSalvar"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
