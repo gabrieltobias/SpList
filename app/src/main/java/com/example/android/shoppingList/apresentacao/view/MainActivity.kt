@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         val header : View = navView.getHeaderView(0)
         val intent2 = Intent(this@MainActivity, Login::class.java)
         val intentProduto = Intent(this@MainActivity, CadastrarProduto::class.java)
+        val intentGerProduto = Intent(this@MainActivity, GerenciarProdutos::class.java)
 
 
         navView.setNavigationItemSelectedListener {
@@ -61,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_home -> Toast.makeText(applicationContext, "Home",Toast.LENGTH_LONG).show()
                 R.id.nav_login -> startActivity(intent2)
                 R.id.cdastrar_produto -> startActivity(intentProduto)
+                R.id.gerenciar_produtos -> startActivity(intentGerProduto)
             }
             true
         }

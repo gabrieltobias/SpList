@@ -6,5 +6,6 @@
     <string name="campo_vazio">Nome da lista não pode ser vazio</string>
     <string name="add_lista">Adicionar Lista</string>
     <string name="add_item_lista">Adicionar Lista</string>
+    <string name="add_produto">Adicionar produto</string>
 
 </resources>

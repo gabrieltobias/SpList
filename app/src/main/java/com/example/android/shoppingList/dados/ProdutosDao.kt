@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.android.shoppingList.apresentacao.model.Produto
 import kotlinx.coroutines.flow.Flow
 
@@ -19,6 +20,9 @@ interface ProdutosDao{
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(produto: Produto)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun updateProduto(produto: Produto)
 
     @Query("DELETE FROM tb_produtos")
     suspend fun deleteAll()

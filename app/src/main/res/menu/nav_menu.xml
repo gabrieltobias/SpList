@@ -14,4 +14,8 @@
         android:id="@+id/cdastrar_produto"
         android:title="Novo Produto"
         android:icon="@drawable/ic_baseline_control_point_24"/>
+    <item
+        android:id="@+id/gerenciar_produtos"
+        android:title="Gerenciar produtos"
+        android:icon="@drawable/ic_baseline_production_quantity_limits_24"/>
 </menu>

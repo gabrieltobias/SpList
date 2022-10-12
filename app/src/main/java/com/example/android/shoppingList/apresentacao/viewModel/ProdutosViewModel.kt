@@ -17,12 +17,15 @@ class ProdutosViewModel(private val repository: ProdutosRepository) : ViewModel(
 
     val todosOsProdutos: LiveData<List<Produto>> = repository.todosOsProdutos.asLiveData()
 
-
     /**
      * Usando coroutine para inserir os dados
      */
     fun insert(produto: Produto) = viewModelScope.launch {
         repository.insert(produto)
+    }
+
+    fun updateProduto(produto: Produto) = viewModelScope.launch {
+        repository.updateProduto(produto)
     }
 }
 

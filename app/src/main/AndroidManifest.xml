@@ -32,6 +32,8 @@
         <activity android:name=".apresentacao.view.NovaListaActivity" />
         <activity android:name=".apresentacao.view.RegistrarUsuario"/>
         <activity android:name=".apresentacao.view.CadastrarProduto"/>
+        <activity android:name=".apresentacao.view.GerenciarProdutos"/>
+        <activity android:name=".apresentacao.view.EditarProduto"/>
     </application>
 
 </manifest>
