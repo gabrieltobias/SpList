@@ -3,6 +3,7 @@ package com.example.android.shoppingList.dados
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +16,10 @@ class ListaDeComprasRepository(private val listaDeComprasDao: ListaDeComprasDao)
     val todasAsListas: Flow<List<ListaDeCompras>> = listaDeComprasDao.GetListas()
     private var id: Int = 1
     val listaUnica: Flow<ListaDeCompras> = listaDeComprasDao.GetLista(id)
+
+    fun listasUsuario(fk_usuario: Int) : Flow<List<ListaDeCompras>>{
+        return listaDeComprasDao.GetListasUsuario(fk_usuario)
+    }
 
     // Garantindo que não exista nenhum trabalho sendo rodado fora da MainThread
     @Suppress("RedundantSuspendModifier")

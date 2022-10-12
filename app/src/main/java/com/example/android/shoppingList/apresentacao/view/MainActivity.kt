@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     private val listasViewModel: ListasViewModel by viewModels {
         ListaViewModelFactory((application as SpListApplication).repository)
     }
+    var idUsuario: Int = 0
 
 
 
@@ -65,10 +66,11 @@ class MainActivity : AppCompatActivity() {
         //Verificando se o usuario esta logado
         val intent_login = intent
         val extras = intent_login.extras
+
         if (extras != null) {
             if (extras.containsKey("Nome")) {
                 val nomeUsuario = extras.getString("Nome")
-                val idUsuario = extras.getInt("idUsuario")
+                idUsuario = extras.getInt("idUsuario")
                 val txtNomeUser = header.findViewById<TextView>(R.id.user_name)
                 txtNomeUser.setText(nomeUsuario)
             }
@@ -122,7 +124,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Adiciona um observer no LiveData retornado pelo todasAsListas
-        listasViewModel.todasAsListas.observe(owner = this) { listas ->
+        listasViewModel.retornaListasUsuario(idUsuario).observe(owner = this) { listas ->
             // Atualiza a cópia em cache do adaptador
             listas.let { adapter.submitList(it) }
         }
@@ -136,7 +138,7 @@ class MainActivity : AppCompatActivity() {
         if (requestCode == novaListaActivityRequestCode && resultCode == Activity.RESULT_OK) {
             intentData?.getStringExtra(NovaListaActivity.EXTRA_REPLY)?.let { reply ->
                 var id = nextInt(1000000)
-                val listaDeCompras = ListaDeCompras(id,reply)
+                val listaDeCompras = ListaDeCompras(id,reply,idUsuario)
                 listasViewModel.insert(listaDeCompras)
             }
         } else {

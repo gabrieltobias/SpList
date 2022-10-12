@@ -1,6 +1,7 @@
 package com.example.android.shoppingList.apresentacao
 
 import androidx.lifecycle.*
+import com.example.android.shoppingList.apresentacao.model.ItensLista
 import com.example.android.shoppingList.apresentacao.model.ListaDeCompras
 import com.example.android.shoppingList.dados.ListaDeComprasRepository
 import kotlinx.coroutines.launch
@@ -15,6 +16,10 @@ class ListasViewModel(private val repository: ListaDeComprasRepository) : ViewMo
 
     val todasAsListas: LiveData<List<ListaDeCompras>> = repository.todasAsListas.asLiveData()
     val listaUnica: LiveData<ListaDeCompras> = repository.listaUnica.asLiveData()
+
+    fun retornaListasUsuario(fk_usuario: Int): LiveData<List<ListaDeCompras>>{
+        return repository.listasUsuario(fk_usuario).asLiveData()
+    }
 
     /**
      * Usando coroutine para inserir os dados

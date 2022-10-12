@@ -1,5 +1,6 @@
 package com.example.android.shoppingList.apresentacao.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -102,7 +103,9 @@ class RegistrarUsuario : AppCompatActivity() {
                 loginViewModel.insert(user)
                 Toast.makeText(applicationContext, "Usuario criado com sucesso",Toast.LENGTH_LONG).show()
                 println("buuuuuug")
-                //Fazer o intent para a pagina de login
+                //Redirect para a página de login
+                val intent = Intent(this@RegistrarUsuario, Login::class.java)
+                startActivity(intent)
             }else{
                 Toast.makeText(applicationContext,"Preencha todos os campos",Toast.LENGTH_SHORT).show()
             }

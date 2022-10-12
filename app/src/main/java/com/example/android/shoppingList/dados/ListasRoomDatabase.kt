@@ -70,7 +70,7 @@ abstract class ListasRoomDatabase : RoomDatabase() {
         suspend fun populateDatabase(listaDeComprasDao: ListaDeComprasDao, produtosDao: ProdutosDao, itensListaDao: ItensListaDao, usuarioDao: UsuarioDao) {
             // Starta o app com um DB clean
             listaDeComprasDao.deleteAll()
-            var listaDeCompras = ListaDeCompras(1,"Lista de Exemplo")
+            var listaDeCompras = ListaDeCompras(1,"Lista de Exemplo",0)
             listaDeComprasDao.insert(listaDeCompras)
 
             produtosDao.deleteAll()
@@ -132,13 +132,8 @@ abstract class ListasRoomDatabase : RoomDatabase() {
             itensListaDao.insert(item_carrinho_4)
             itensListaDao.insert(item_carrinho_5)
 
-            var default_user: Usuario = Usuario(1,"Jhon", "Doe","teste","123","admin")
+            var default_user: Usuario = Usuario(0,"Convidado", "teste","teste","123","Usuario")
             usuarioDao.insertUserData(default_user)
-
-
-
-
-
         }
     }
 }

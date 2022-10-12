@@ -55,8 +55,6 @@ class ListasAdapter() : ListAdapter<ListaDeCompras, ListaViewHolder>(LISTAS_COMP
             }
         }
 
-
-
         companion object {
             fun create(parent: ViewGroup, listener: onItemClickListener): ListaViewHolder {
                 val view: View = LayoutInflater.from(parent.context)

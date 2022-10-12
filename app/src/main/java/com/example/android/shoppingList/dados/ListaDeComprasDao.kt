@@ -27,6 +27,9 @@ interface ListaDeComprasDao {
     @Query("SELECT * FROM tb_ListaDeCompras WHERE id=:id ")
     fun GetLista(id: Int): Flow<ListaDeCompras>
 
+    @Query("SELECT * FROM tb_ListaDeCompras WHERE fk_usuario=:fk_usuario ")
+    fun GetListasUsuario(fk_usuario: Int): Flow<List<ListaDeCompras>>
+
     @Update
     fun updateLista(listaDeCompras: ListaDeCompras)
 
