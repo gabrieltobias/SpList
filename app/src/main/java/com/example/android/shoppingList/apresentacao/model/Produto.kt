@@ -10,4 +10,5 @@ import androidx.room.PrimaryKey
 data class Produto(
         @PrimaryKey val id: Int,
         @ColumnInfo(name = "NomeProduto") val NomeProduto: String,
-        @ColumnInfo(name = "CategoriaItem") val CategoriaItem: String)
+        @ColumnInfo(name = "CategoriaItem") val CategoriaItem: String,
+        @ColumnInfo(name = "Valor") val ValorItem: Double)

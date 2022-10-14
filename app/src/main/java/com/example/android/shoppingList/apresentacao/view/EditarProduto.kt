@@ -37,6 +37,7 @@ class EditarProduto: AppCompatActivity() {
 
 
         val et_nomeProduto = findViewById<EditText>(R.id.nomeTextField)
+        val et_valor = findViewById<EditText>(R.id.valorTextField)
 
 
         val intent_gerenciaProduto = intent
@@ -44,12 +45,14 @@ class EditarProduto: AppCompatActivity() {
         val id_produto = extras?.getInt("id_produto")
         val nomeProduto = extras?.getString("nome_produto")
         val categoriaProduto = extras?.getString("categoria_produto")
+        var valorProduto = extras?.getDouble("valor_produto")
         val btnSalvar = findViewById<Button>(R.id.btnSalvar)
         val btnDeletarProduto = findViewById<ImageButton>(R.id.btnDeletaProduto)
         val intentGerenciaProdutos = Intent(this@EditarProduto,GerenciarProdutos::class.java)
         intentGerenciaProdutos.putExtra("nome_usuario", nomeUsuario)
         intentGerenciaProdutos.putExtra("id_usuario", idUsuario)
         et_nomeProduto.setText(nomeProduto)
+        et_valor.setText("R$: " + valorProduto.toString())
 
         //Combobox de categoria
         val spinnerCategoria: Spinner = findViewById(R.id.spinnerCategoria)
@@ -71,13 +74,20 @@ class EditarProduto: AppCompatActivity() {
                 Toast.makeText(applicationContext, "Insira um nome para o produto", Toast.LENGTH_LONG).show()
                 return false
             }
+            if(et_valor.text.isNullOrEmpty()){
+                Toast.makeText(applicationContext, "Insira um valor", Toast.LENGTH_LONG).show()
+            }
             return true
         }
 
+
+
         btnSalvar.setOnClickListener {
             if(validation()){
-                val produto = Produto(id_produto!!,et_nomeProduto.text.toString(),spinnerCategoria.getSelectedItem().toString())
+                valorProduto = et_valor.text.toString().toDouble()
+                val produto = Produto(id_produto!!,et_nomeProduto.text.toString(),spinnerCategoria.getSelectedItem().toString(),valorProduto!!)
                 produtoViewModel.insert(produto)
+                println("Valor: " + valorProduto)
                 Toast.makeText(applicationContext,"Produto atualizado com sucesso", Toast.LENGTH_SHORT).show()
                 startActivity(intentGerenciaProdutos)
             }
@@ -88,7 +98,8 @@ class EditarProduto: AppCompatActivity() {
                 val produto = Produto(
                     id_produto!!,
                     et_nomeProduto.text.toString(),
-                    spinnerCategoria.getSelectedItem().toString()
+                    spinnerCategoria.getSelectedItem().toString(),
+                    valorProduto!!
                 )
                 val builder = AlertDialog.Builder(this@EditarProduto)
                 builder.setMessage("Deseja deletar esse produto?")

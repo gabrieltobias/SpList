@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeTextField" />
 
-    <!--<TextView
+    <TextView
         android:id="@+id/txtValor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vategoriaTextField" /> -->
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
     <EditText
         android:id="@+id/nomeTextField"
@@ -97,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCategoriaProduto" />
-    <!--
+
     <EditText
         android:id="@+id/valorTextField"
         android:layout_width="0dp"
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtValor" /> -->
+        app:layout_constraintTop_toBottomOf="@+id/txtValor" />
 
     <Button
         android:id="@+id/btnSalvar"
@@ -126,21 +126,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.463"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCategoriaProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/valorTextField" />
 
     <ImageButton
         android:id="@+id/btnDeletaProduto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="108dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="52dp"
         android:src="@drawable/ic_baseline_delete_24"
         android:text="Deletar"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.11"
         app:layout_constraintStart_toStartOf="@+id/btnSalvar"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
+        app:layout_constraintTop_toBottomOf="@+id/valorTextField" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,12 +64,12 @@ class GerenciarProdutos: AppCompatActivity() {
                 intentEditarProduto.putExtra("id_produto",produtoAtual.id)
                 intentEditarProduto.putExtra("nome_produto",produtoAtual.NomeProduto)
                 intentEditarProduto.putExtra("categoria_produto",produtoAtual.CategoriaItem)
+                intentEditarProduto.putExtra("valor_produto",produtoAtual.ValorItem)
                 intentEditarProduto.putExtra("nome_usuario", nomeUsuario)
                 intentEditarProduto.putExtra("id_usuario", idUsuario)
                 startActivity(intentEditarProduto)
             }
         })
-
 
         // Adiciona um observer no LiveData retornado pelo todasAsListas
         produtosViewModel.todosOsProdutos.observe(owner = this) { itens ->

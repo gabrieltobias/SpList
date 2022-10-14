@@ -2,6 +2,7 @@ package com.example.android.shoppingList.apresentacao.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,7 @@ class CadastrarProduto: AppCompatActivity() {
 
         val btnCadastrar = findViewById<Button>(R.id.btnCadastrar)
         val et_nomeProduto = findViewById<EditText>(R.id.nomeTextField)
+        val et_valor = findViewById<EditText>(R.id.valorTextField)
 
         //Combobox de categoria
         val spinnerCategoria: Spinner = findViewById(R.id.spinnerCategoria)
@@ -61,8 +63,15 @@ class CadastrarProduto: AppCompatActivity() {
                 Toast.makeText(this@CadastrarProduto, "Insira um nome para o produto", Toast.LENGTH_LONG).show()
                 return false
             }
+            if (et_valor.text.isNullOrEmpty()) {
+                Toast.makeText(this@CadastrarProduto, "Insira um valor", Toast.LENGTH_LONG).show()
+                return false
+            }
             return true
         }
+
+        fun Editable.toDouble() = toString().toDouble()
+
 
         btnCadastrar.setOnClickListener {
             if(validation()){
@@ -70,7 +79,7 @@ class CadastrarProduto: AppCompatActivity() {
                 val intent_mainActivity = Intent(this@CadastrarProduto, MainActivity::class.java)
                 intent_mainActivity.putExtra("Nome", nomeUsuario)
                 intent_mainActivity.putExtra("idUsuario", idUsuario)
-                val produto = Produto(idProduto,et_nomeProduto.text.toString(),categoria)
+                val produto = Produto(idProduto,et_nomeProduto.text.toString(),categoria,et_valor.text.toDouble())
                 produtoViewModel.insert(produto)
                 Toast.makeText(applicationContext,"Produto cadastrado com sucesso",Toast.LENGTH_SHORT).show()
                 startActivity(intent_mainActivity)

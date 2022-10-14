@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nomeTextField" />
 
-    <!--<TextView
+    <TextView
         android:id="@+id/txtValor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vategoriaTextField" /> -->
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCategoria" />
 
     <EditText
         android:id="@+id/nomeTextField"
@@ -97,7 +97,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCategoriaProduto" />
-    <!--
+
     <EditText
         android:id="@+id/valorTextField"
         android:layout_width="0dp"
@@ -113,7 +113,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtValor" /> -->
+        app:layout_constraintTop_toBottomOf="@+id/txtValor" />
 
     <Button
         android:id="@+id/btnCadastrar"
@@ -127,7 +127,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtCategoriaProduto" />
+        app:layout_constraintTop_toBottomOf="@+id/txtValor" />
 
 
 
