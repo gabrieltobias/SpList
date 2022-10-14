@@ -79,6 +79,9 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
+        println("ID usuario: " + idUsuario)
+
+
         //Função para visualizar uma lista a partir de um item
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {

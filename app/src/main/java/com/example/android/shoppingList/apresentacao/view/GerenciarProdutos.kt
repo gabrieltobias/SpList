@@ -29,7 +29,7 @@ class GerenciarProdutos: AppCompatActivity() {
         val extras = intent_mainActivity.extras
 
         var nomeUsuario = "Convidado"
-        var idUsuario = 1
+        var idUsuario = 0
 
         if (extras != null) {
             nomeUsuario = extras.getString("nome_usuario")!!
@@ -89,7 +89,7 @@ class GerenciarProdutos: AppCompatActivity() {
         val extras = intent_mainActivity.extras
 
         var nomeUsuario = "Convidado"
-        var idUsuario = 1
+        var idUsuario = 0
 
         if (extras != null) {
             nomeUsuario = extras.getString("nome_usuario")!!
