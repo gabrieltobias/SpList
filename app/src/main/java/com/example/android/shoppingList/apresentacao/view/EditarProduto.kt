@@ -52,7 +52,7 @@ class EditarProduto: AppCompatActivity() {
         intentGerenciaProdutos.putExtra("nome_usuario", nomeUsuario)
         intentGerenciaProdutos.putExtra("id_usuario", idUsuario)
         et_nomeProduto.setText(nomeProduto)
-        et_valor.setText("R$: " + valorProduto.toString())
+        et_valor.setText(valorProduto.toString())
 
         //Combobox de categoria
         val spinnerCategoria: Spinner = findViewById(R.id.spinnerCategoria)
@@ -79,8 +79,6 @@ class EditarProduto: AppCompatActivity() {
             }
             return true
         }
-
-
 
         btnSalvar.setOnClickListener {
             if(validation()){
