@@ -35,7 +35,6 @@ class EditarProduto: AppCompatActivity() {
             idUsuario = extras2.getInt("id_usuario")
         }
 
-
         val et_nomeProduto = findViewById<EditText>(R.id.nomeTextField)
         val et_valor = findViewById<EditText>(R.id.valorTextField)
 

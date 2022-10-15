@@ -22,4 +22,6 @@ data class ItensLista(
         @ColumnInfo(name = "fk_listaDeCompras") val FkListaDeCompras: Int,
         @ColumnInfo(name = "fk_produto") val FkProduto: Int,
         @ColumnInfo(name = "NomeProduto") val NomeProduto: String,
-        @ColumnInfo(name = "CategoriaItem") val CategoriaProduto: String)
+        @ColumnInfo(name = "CategoriaItem") val CategoriaProduto: String,
+        @ColumnInfo(name = "Valor") val ValorProduto: Double)
+

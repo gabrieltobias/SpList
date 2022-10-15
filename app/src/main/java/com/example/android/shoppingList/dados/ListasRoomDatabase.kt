@@ -120,11 +120,11 @@ abstract class ListasRoomDatabase : RoomDatabase() {
             produtosDao.insert(produto_exemplo_21)
 
 
-            var item_carrinho = ItensLista(1,1,1,"Leite","Latcinios")
-            var item_carrinho_2 = ItensLista(2,1,2, "Frango","Carnes")
-            var item_carrinho_3 = ItensLista(3,1,7,"Suco","Bebidas")
-            var item_carrinho_4 = ItensLista(4,1,5,"Shampoo", "Higiene")
-            var item_carrinho_5 = ItensLista(5,1,8,"Cerveja","Bebidas")
+            var item_carrinho = ItensLista(1,1,1,"Leite","Latcinios",4.50)
+            var item_carrinho_2 = ItensLista(2,1,2, "Frango","Carnes",35.23)
+            var item_carrinho_3 = ItensLista(3,1,7,"Suco","Bebidas",12.0)
+            var item_carrinho_4 = ItensLista(4,1,5,"Shampoo", "Higiene",15.20)
+            var item_carrinho_5 = ItensLista(5,1,8,"Cerveja","Bebidas",3.50)
 
             itensListaDao.insert(item_carrinho)
             itensListaDao.insert(item_carrinho_2)

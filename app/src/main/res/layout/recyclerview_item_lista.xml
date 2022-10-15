@@ -14,4 +14,13 @@
         android:clickable="true"
         android:padding="15dp" />
 
+    <TextView
+        android:id="@+id/txtValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="20dp"
+        android:textSize="20dp"
+        android:text="55.0" />
+
 </RelativeLayout>

@@ -21,21 +21,24 @@ class VisualizaListaAdapter(): ListAdapter<ItensLista, VisualizaListaAdapter.Ite
 
     override fun onBindViewHolder(holder: VisualizaListaAdapter.ItensViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.NomeProduto)
+        holder.itensItemView.text = current.NomeProduto
+        holder.valorTextView.text = current.ValorProduto.toString()
+        //holder.bind(current.NomeProduto)
     }
 
     class ItensViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itensItemView: TextView = itemView.findViewById(R.id.txtViewNomeItem)
-
+         val itensItemView: TextView = itemView.findViewById(R.id.txtViewNomeItem)
+         val valorTextView: TextView = itemView.findViewById(R.id.txtValor)
+        /*
         fun bind(text: String?) {
             itensItemView.text = text
-        }
+            valorTextView.text = text
+        } */
 
         companion object {
             fun create(parent: ViewGroup): ItensViewHolder {
                 val view: View = LayoutInflater.from(parent.context)
                         .inflate(R.layout.recyclerview_item_lista, parent, false)
-
                 return ItensViewHolder(view)
             }
         }

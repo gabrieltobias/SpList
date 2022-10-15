@@ -21,6 +21,10 @@ class VisualizaListaViewModel(private val repository: ItensListaRepository): Vie
         return repository.retornaItensLista(fk_lista).asLiveData()
     }
 
+    fun retornaSomaLista(fk_lista: Int): LiveData<Float> {
+        return repository.retornaSomaLista(fk_lista).asLiveData()
+    }
+
     fun deletaItemLista(itensLista: ItensLista) = viewModelScope.launch {
         repository.deletaItemLista(itensLista)
     }

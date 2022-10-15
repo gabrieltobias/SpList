@@ -48,7 +48,7 @@ class SelecionaProdutosActivity : AppCompatActivity() {
             override fun onItemClick(position: Int) {
                 val produtoAtual = adapter.currentList.get(position)
                 var itemId = Random.nextInt(1000000)
-                var itemAdd = ItensLista(itemId,id_lista,produtoAtual.id,produtoAtual.NomeProduto,produtoAtual.CategoriaItem)
+                var itemAdd = ItensLista(itemId,id_lista,produtoAtual.id,produtoAtual.NomeProduto,produtoAtual.CategoriaItem,produtoAtual.ValorItem)
 
                 val builder = AlertDialog.Builder(this@SelecionaProdutosActivity)
                 builder.setMessage("Deseja adicionar o item: ${produtoAtual.NomeProduto} a lista?")

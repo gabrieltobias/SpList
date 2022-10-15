@@ -22,6 +22,9 @@ class ItensListaRepository(private val itensListaDao: ItensListaDao) {
     fun retornaItensLista(fk_lista : Int) : Flow<List<ItensLista>> {
         return itensListaDao.GetItensListaById(fk_lista)
     }
+    fun retornaSomaLista(fk_lista: Int) : Flow<Float> {
+        return itensListaDao.GetSomaLista(fk_lista)
+    }
 
     suspend fun deletaItemLista(itensLista: ItensLista) = itensListaDao.deletaItemLista(itensLista)
 

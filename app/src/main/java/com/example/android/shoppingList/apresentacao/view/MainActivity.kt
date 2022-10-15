@@ -79,15 +79,11 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        println("ID usuario: " + idUsuario)
-
-
         //Função para visualizar uma lista a partir de um item
         adapter.setOnItemClickListener(object : ListasAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 //Criando o intent para o VisualizaLista
                 val intent = Intent(this@MainActivity, VisualizaListaActivity::class.java)
-
                 //Passando a lista que foi selecionada atraves do putExtra()
                 val listaDeCompras = adapter.currentList.get(position)
                 intent.putExtra("id",listaDeCompras.id)
@@ -113,7 +109,6 @@ class MainActivity : AppCompatActivity() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val pos = viewHolder.adapterPosition
                 val listaDeCompras = adapter.currentList
-
                 listasViewModel.deleteLista(listaDeCompras.get(pos))
                 Toast.makeText(this@MainActivity,"Lista deletada",Toast.LENGTH_LONG).show()
             }

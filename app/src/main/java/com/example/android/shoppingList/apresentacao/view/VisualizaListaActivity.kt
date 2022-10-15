@@ -3,8 +3,10 @@ package com.example.android.shoppingList.apresentacao.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,13 +16,17 @@ import com.example.android.shoppingList.apresentacao.viewModel.VisualizaItensVie
 import com.example.android.shoppingList.apresentacao.viewModel.VisualizaListaViewModel
 import com.example.android.shoppingList.dados.SpListApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.lang.String.format
+import java.math.RoundingMode
+import java.text.DecimalFormat
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 class VisualizaListaActivity : AppCompatActivity() {
 
     private val visualizaListaViewModel: VisualizaListaViewModel by viewModels {
         VisualizaItensViewModelFactory((application as SpListApplication).repository_ItensLista)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,7 +72,6 @@ class VisualizaListaActivity : AppCompatActivity() {
         ItemTouchHelper(itemTouchHelperCallback).apply {
             attachToRecyclerView(recyclerView)
         }
-
 
         //Botão que adiciona item a lista
         val btnAddItemLista = findViewById<FloatingActionButton>(R.id.add_item_lista)
